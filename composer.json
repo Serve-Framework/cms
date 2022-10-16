@@ -1,0 +1,38 @@
+{
+    "name": "serve/cms",
+    "description": "Serve CMS",
+    "keywords": [
+        "serve",
+        "framework"
+    ],
+    "homepage": "https://serve-framework.github.io",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Joe J. Howard",
+            "email": "joe.howard.au@icloud.com"
+        },
+        {
+            "name": "Contributors",
+            "homepage": "https://github.com/serve-framework/Framework/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "cms\\": "src/cms",
+            "app\\": "app"
+        }
+    },
+    "require": {
+        "php": ">=8.0.0",
+        "serve/framework": "8.0.*",
+        "serve/app": "8.0.*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "9.0-dev"
+        }
+    }
+}
