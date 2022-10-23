@@ -9,14 +9,14 @@
      * 
      * @var obj
      */
-    var Helper = Modules.get('JSHelper');
+    var Helper = Hubble.helper();
 
     /**
      * Ajax Provider
      * 
      * @var obj
      */
-    var Ajax = Modules.require('Ajax');
+    var Ajax = Hubble.require('Ajax');
 
     /**
      * Markdown library
@@ -249,13 +249,13 @@
  * 
  * @var object
  */
-var KansoWriter = function()
+var ServeWriter = function()
 {
     this.version   = "2.0.0";
 
     this.author    = "Joe Howard";
 
-    this.copyright = "Kanso 2017";
+    this.copyright = "Serve";
 
     this._boot();
 };
@@ -265,14 +265,14 @@ var KansoWriter = function()
  * 
  * @var object
  */
-KansoWriter.prototype = {};
+ServeWriter.prototype = {};
 
 /**
  * API object
  * 
  * @var object
  */
-KansoWriter.prototype.api =
+ServeWriter.prototype.api =
 {
     code_editor  : null,
     has_saved    : false,
@@ -287,7 +287,7 @@ KansoWriter.prototype.api =
  * Boot the application
  * 
  */
-KansoWriter.prototype._boot = function()
+ServeWriter.prototype._boot = function()
 {
     // Add document classes to HTML and body
     this._addBodyClasses();
@@ -336,7 +336,7 @@ KansoWriter.prototype._boot = function()
  * Add the initial body/html elements classes 
  * 
  */
-KansoWriter.prototype._addBodyClasses = function()
+ServeWriter.prototype._addBodyClasses = function()
 {
     document.getElementsByTagName('html')[0].className = 'writer-html';
 
@@ -347,7 +347,7 @@ KansoWriter.prototype._addBodyClasses = function()
  * Get the current post id and save it to the API
  * 
  */
-KansoWriter.prototype._getPostId = function()
+ServeWriter.prototype._getPostId = function()
 {
     var postID = _writerTextAreaEl.dataset.id;
 
@@ -363,7 +363,7 @@ KansoWriter.prototype._getPostId = function()
  * Bind save/publish triggers
  * 
  */
-KansoWriter.prototype._bindSaveTrigger = function()
+ServeWriter.prototype._bindSaveTrigger = function()
 {
     var _this = this;
 
@@ -381,7 +381,7 @@ KansoWriter.prototype._bindSaveTrigger = function()
  * Bind save/publish triggers
  * 
  */
-KansoWriter.prototype._bindPublishTrigger = function()
+ServeWriter.prototype._bindPublishTrigger = function()
 {
     var _this = this;
 
@@ -399,7 +399,7 @@ KansoWriter.prototype._bindPublishTrigger = function()
  * Bind hide/show sidebar
  * 
  */
-KansoWriter.prototype._bindSidebarTimer = function()
+ServeWriter.prototype._bindSidebarTimer = function()
 {
     Helper.addEventListener(window, 'mousemove', this._sidebarVisibilityHandler);
 
@@ -411,13 +411,13 @@ KansoWriter.prototype._bindSidebarTimer = function()
  *
  * @param event e JavaScript mousemove event
  */
-KansoWriter.prototype._sidebarVisibilityHandler = function(e)
+ServeWriter.prototype._sidebarVisibilityHandler = function(e)
 {
     clearTimeout(_sbTimer);
 
     e = e || window.event;
 
-    var _this =  Modules.get('KansoWriter');
+    var _this =  Hubble.require('ServeWriter');
 
     var fromSide = event.clientX;
 
@@ -437,7 +437,7 @@ KansoWriter.prototype._sidebarVisibilityHandler = function(e)
  * Hides the sidebar
  *
  */
-KansoWriter.prototype._hideSidebar = function()
+ServeWriter.prototype._hideSidebar = function()
 {
     clearTimeout(_sbTimer);
 
@@ -448,7 +448,7 @@ KansoWriter.prototype._hideSidebar = function()
  * Shows the sidebar
  *
  */
-KansoWriter.prototype._showSidebar = function()
+ServeWriter.prototype._showSidebar = function()
 {
     clearTimeout(_sbTimer);
 
@@ -459,7 +459,7 @@ KansoWriter.prototype._showSidebar = function()
  * Initialize codemirror
  *
  */
-KansoWriter.prototype._initCodeMirror = function()
+ServeWriter.prototype._initCodeMirror = function()
 {
     var _this = this;
 
@@ -487,11 +487,11 @@ KansoWriter.prototype._initCodeMirror = function()
         {
             value          : content,
             mode           : 'spell-checker',
-            backdrop       : 'markdown',
+            backdrop       : 'gfm',
             lineWrapping   : true,
             lineNumbers    : false,
             dragDrop       : false,
-            theme          : 'base16-light',
+            theme          : 'oceanic',
             scrollbarStyle : 'overlay',
             extraKeys:
             {
@@ -511,7 +511,7 @@ KansoWriter.prototype._initCodeMirror = function()
  *
  * @return string
  */
-KansoWriter.prototype._getInitialWriterContent = function()
+ServeWriter.prototype._getInitialWriterContent = function()
 {
     // Writer content
     var content = _writerTextAreaEl.innerHTML.trim();
@@ -530,8 +530,10 @@ KansoWriter.prototype._getInitialWriterContent = function()
  * @param  string syntax  Syntax to highlight
  * @return string
  */
-KansoWriter.prototype._highlightCode = function(content, syntax) {
-
+ServeWriter.prototype._highlightCode = function(content, syntax)
+{
+    console.log('highling');
+    
     if (syntax === '')
     {
         return content;
@@ -550,7 +552,7 @@ KansoWriter.prototype._highlightCode = function(content, syntax) {
  * Bind codemirror events
  *
  */
-KansoWriter.prototype._bindCodeMirrorEvents = function()
+ServeWriter.prototype._bindCodeMirrorEvents = function()
 {
     var _this = this;
 
@@ -574,7 +576,7 @@ KansoWriter.prototype._bindCodeMirrorEvents = function()
  * Update layouts when writing
  *
  */
-KansoWriter.prototype._onWriterChange = function()
+ServeWriter.prototype._onWriterChange = function()
 {
     this._windowResizeHandler();
 
@@ -589,7 +591,7 @@ KansoWriter.prototype._onWriterChange = function()
  * Bind the footer trigger buttons
  *
  */
-KansoWriter.prototype._bindFotterTriggers = function()
+ServeWriter.prototype._bindFotterTriggers = function()
 {
     var _this = this;
 
@@ -667,7 +669,7 @@ KansoWriter.prototype._bindFotterTriggers = function()
  * Bind change view trigger buttons
  *
  */
-KansoWriter.prototype._bindViewTriggers = function()
+ServeWriter.prototype._bindViewTriggers = function()
 {
     for (var i = 0; i < _changeViewTriggerEls.length; i++)
     {
@@ -679,11 +681,11 @@ KansoWriter.prototype._bindViewTriggers = function()
  * Change the view when trigger is clicked
  *
  */
-KansoWriter.prototype._changeViewHandler = function(e)
+ServeWriter.prototype._changeViewHandler = function(e)
 {
     e = e || window.event;
 
-    var _this     = Modules.get('KansoWriter');
+    var _this     = Hubble.require('ServeWriter');
     var trigger   = Helper.closest(e.target, 'button');
     var wrap;
 
@@ -759,7 +761,7 @@ KansoWriter.prototype._changeViewHandler = function(e)
  * Save the current scroll positions
  *
  */
-KansoWriter.prototype._saveCurrScrollPos = function()
+ServeWriter.prototype._saveCurrScrollPos = function()
 {
     var acitve = Helper.$('.js-writer-footer .view-toggles button.active');
 
@@ -785,13 +787,13 @@ KansoWriter.prototype._saveCurrScrollPos = function()
  *
  * @param event e JavaScript mousemove event
  */
-KansoWriter.prototype._footerVisibilityHandler = function(e)
+ServeWriter.prototype._footerVisibilityHandler = function(e)
 {
     e = e || window.event;
 
     var fromBottom = window.innerHeight - event.clientY;
 
-    var _this = Modules.get('KansoWriter');
+    var _this = Hubble.require('ServeWriter');
 
     clearTimeout(_footerTimer);
 
@@ -811,7 +813,7 @@ KansoWriter.prototype._footerVisibilityHandler = function(e)
  * Show the footer
  *
  */
-KansoWriter.prototype._showFooter = function()
+ServeWriter.prototype._showFooter = function()
 {
     clearTimeout(_footerTimer);
 
@@ -822,7 +824,7 @@ KansoWriter.prototype._showFooter = function()
  * Hide the footer
  *
  */
-KansoWriter.prototype._hideFooter = function()
+ServeWriter.prototype._hideFooter = function()
 {
     clearTimeout(_footerTimer);
     
@@ -834,7 +836,7 @@ KansoWriter.prototype._hideFooter = function()
  *
  * @param string text Text to toggle into heading
  */
-KansoWriter.prototype._toggleHeading = function(text)
+ServeWriter.prototype._toggleHeading = function(text)
 {
     var lineNum    = this.api.code_editor.getCursor().line;
     var lineText   = this.api.code_editor.getLine(lineNum);
@@ -884,7 +886,7 @@ KansoWriter.prototype._toggleHeading = function(text)
  *
  * @param bool isUnordered Is this an unordered list ?
  */
-KansoWriter.prototype._toggleList = function(isUnordered)
+ServeWriter.prototype._toggleList = function(isUnordered)
 {
     var lineNum    = this.api.code_editor.getCursor().line;
     var lineText   = this.api.code_editor.getLine(lineNum);
@@ -951,7 +953,7 @@ KansoWriter.prototype._toggleList = function(isUnordered)
  *
  * @param string prefix Text prefix/suffix to wrap selection/line
  */
-KansoWriter.prototype._toggleTextStyle = function(prefix)
+ServeWriter.prototype._toggleTextStyle = function(prefix)
 {
 
     var cursorPos  = this.api.code_editor.somethingSelected() ? this.api.code_editor.getCursor("to") : this.api.code_editor.getCursor();
@@ -1015,7 +1017,7 @@ KansoWriter.prototype._toggleTextStyle = function(prefix)
  * @param string suffix      Suffix string
  * @param string noSelection Fallback if nothing is selected
  */
-KansoWriter.prototype._insertWrapText = function(prefix, suffix, noSelection)
+ServeWriter.prototype._insertWrapText = function(prefix, suffix, noSelection)
 {
     var toInsert = '';
     
@@ -1040,7 +1042,7 @@ KansoWriter.prototype._insertWrapText = function(prefix, suffix, noSelection)
  *
  * @param string text Text to insert
  */
-KansoWriter.prototype._insertText = function(text)
+ServeWriter.prototype._insertText = function(text)
 {
     var doc    = this.api.code_editor;
     var cursor = doc.getCursor();
@@ -1062,7 +1064,7 @@ KansoWriter.prototype._insertText = function(text)
  * Bind post meta key/value handler
  *
  */
-KansoWriter.prototype._bindPostMetaTriggers = function() {
+ServeWriter.prototype._bindPostMetaTriggers = function() {
 
     var addTrigger  = Helper.$('.js-add-post-meta-btn');
     var rmvTriggers = Helper.$All('.js-rmv-post-meta-btn');
@@ -1080,7 +1082,7 @@ KansoWriter.prototype._bindPostMetaTriggers = function() {
  *
  * @param event e JavaScript click event
  */
-KansoWriter.prototype._removePostMetaHandler = function(e)
+ServeWriter.prototype._removePostMetaHandler = function(e)
 {
     e = e || window.event;
 
@@ -1094,14 +1096,14 @@ KansoWriter.prototype._removePostMetaHandler = function(e)
  *
  * @param event e JavaScript click event
  */
-KansoWriter.prototype._addPostMetaHandler = function(e)
+ServeWriter.prototype._addPostMetaHandler = function(e)
 {
     e = e || window.event
     
     e.preventDefault();
 
     var container = Helper.$('.js-post-meta-container');
-    var _this     = Modules.get('KansoWriter');
+    var _this     = Hubble.require('ServeWriter');
     var row       = document.createElement('DIV');
     row.className = 'row roof-xs js-meta-row';
     row.innerHTML =
@@ -1129,7 +1131,7 @@ KansoWriter.prototype._addPostMetaHandler = function(e)
  * Bind window resize functions
  *
  */
-KansoWriter.prototype._bindWindowResize = function()
+ServeWriter.prototype._bindWindowResize = function()
 {
     var _this = this;
     
@@ -1150,7 +1152,7 @@ KansoWriter.prototype._bindWindowResize = function()
  * Window resize handler
  *
  */
-KansoWriter.prototype._windowResizeHandler = function()
+ServeWriter.prototype._windowResizeHandler = function()
 {
     _writerContainerEl.style.height = window.innerHeight + "px";
 }
@@ -1159,7 +1161,7 @@ KansoWriter.prototype._windowResizeHandler = function()
  * Bind the thumbnail chooser
  *
  */
-KansoWriter.prototype._bindThumbnailChooser = function()
+ServeWriter.prototype._bindThumbnailChooser = function()
 {
     var _this               = this;
     var showMediaLibTrigger = Helper.$('.js-select-img-trigger');
@@ -1198,7 +1200,7 @@ KansoWriter.prototype._bindThumbnailChooser = function()
  * Show the media library
  *
  */
-KansoWriter.prototype._showMediaLibrary = function(e)
+ServeWriter.prototype._showMediaLibrary = function(e)
 {
     Helper.addClass(Helper.$('.js-media-library'), 'feature-image');
 }
@@ -1207,9 +1209,9 @@ KansoWriter.prototype._showMediaLibrary = function(e)
  * Set the thumbnail image
  *
  */
-KansoWriter.prototype._setThumbnailImage = function()
+ServeWriter.prototype._setThumbnailImage = function()
 {
-    Modules.get('MediaLibrary')._hideLibrary();
+    Hubble.require('MediaLibrary')._hideLibrary();
     
     Helper.$('.js-feature-id').value = Helper.$('#media_id').value;
     
@@ -1222,7 +1224,7 @@ KansoWriter.prototype._setThumbnailImage = function()
  * Clear the thumbnail image
  *
  */
-KansoWriter.prototype._clearThumbnailImage = function()
+ServeWriter.prototype._clearThumbnailImage = function()
 {
     Helper.$('.js-feature-id').value = '';
 
@@ -1235,7 +1237,7 @@ KansoWriter.prototype._clearThumbnailImage = function()
  * Bind input change events
  *
  */
-KansoWriter.prototype._bindInputChanges = function()
+ServeWriter.prototype._bindInputChanges = function()
 {
     var allInputs = Helper.$All('.js-review-wrap input, .js-review-wrap textarea, .js-review-wrap select');
     
@@ -1250,9 +1252,9 @@ KansoWriter.prototype._bindInputChanges = function()
  *
  * @param event e JavaScript input change event
  */
-KansoWriter.prototype._inputChangeHandler = function(e)
+ServeWriter.prototype._inputChangeHandler = function(e)
 {
-    var _this = Modules.get('KansoWriter');
+    var _this = Hubble.require('ServeWriter');
 
     _this._startAutoSaver();
 }
@@ -1263,7 +1265,7 @@ KansoWriter.prototype._inputChangeHandler = function(e)
  * @param bool showNotification Show a notification after saving
  * @param bool isPublish        Are we publishing the article ?
  */
-KansoWriter.prototype._saveArticle = function(showNotification, isPublish)
+ServeWriter.prototype._saveArticle = function(showNotification, isPublish)
 {
     showNotification = (typeof showNotification === 'undefined' ? false : showNotification);
 
@@ -1290,7 +1292,7 @@ KansoWriter.prototype._saveArticle = function(showNotification, isPublish)
     }
 
     // validate the form
-    var validator = Modules.get('FormValidator', Helper.$('.js-writer-form'));
+    var validator = Hubble.require('FormValidator', Helper.$('.js-writer-form'));
 
     validator.append('ajax_request',  this._getAjaxType());
     validator.append('id',            this.api.article_id);
@@ -1342,7 +1344,7 @@ KansoWriter.prototype._saveArticle = function(showNotification, isPublish)
         } 
         else
         {
-            Modules.require('Notifications', { type : 'danger', msg : 'The server encountered an error while saving the article.'});
+            Hubble.require('Notifications', { type : 'danger', msg : 'The server encountered an error while saving the article.'});
         }
 
         _this.api.is_saving = false;
@@ -1351,7 +1353,7 @@ KansoWriter.prototype._saveArticle = function(showNotification, isPublish)
     },
     function(error)
     {
-        Modules.require('Notifications', { type : 'danger', msg : 'The server encountered an error while saving the article.'});
+        Hubble.require('Notifications', { type : 'danger', msg : 'The server encountered an error while saving the article.'});
 
         _this.api.is_saving = false;
 
@@ -1365,7 +1367,7 @@ KansoWriter.prototype._saveArticle = function(showNotification, isPublish)
  *
  * @return string
  */
-KansoWriter.prototype._getAjaxType = function()
+ServeWriter.prototype._getAjaxType = function()
 {
     if (this.api.new_article === true)
     {
@@ -1383,13 +1385,13 @@ KansoWriter.prototype._getAjaxType = function()
  * @param bool   showNotification Show a notification after saving
  * @param bool   isPublish        Are we publishing the article ?
  */
-KansoWriter.prototype._onSaved = function(postId, postSlug, showNotification, isPublish)
+ServeWriter.prototype._onSaved = function(postId, postSlug, showNotification, isPublish)
 {
     if (showNotification && isPublish)
     {
         var slug = location.protocol + "//" + location.host + '/' + postSlug;
         
-        Modules.require('Notifications', { type : 'success', msg : 'Your article was successfully published. Click <a href="' + slug + '" target="_blank">here</a> to view live.'});
+        Hubble.require('Notifications', { type : 'success', msg : 'Your article was successfully published. Click <a href="' + slug + '" target="_blank">here</a> to view live.'});
 
         this.api.is_published = true;
     }
@@ -1397,7 +1399,7 @@ KansoWriter.prototype._onSaved = function(postId, postSlug, showNotification, is
     {
         var slug = location.protocol + "//" + location.host + '/' + postSlug;
 
-        Modules.require('Notifications', { type : 'success', msg : 'Your article was successfully saved. Click <a href="' + slug + '" target="_blank">here</a> to view live.'});
+        Hubble.require('Notifications', { type : 'success', msg : 'Your article was successfully saved. Click <a href="' + slug + '" target="_blank">here</a> to view live.'});
     }
 
     Helper.removeClass(_saveTriggerEl, 'active');
@@ -1413,7 +1415,7 @@ KansoWriter.prototype._onSaved = function(postId, postSlug, showNotification, is
  * Check if a list is present when enter is pressed in code editor
  *
  */
-KansoWriter.prototype._checkForLists = function()
+ServeWriter.prototype._checkForLists = function()
 {
     var prevLine   = this.api.code_editor.getCursor().line - 1;
     var lineText   = this.api.code_editor.getLine(prevLine);
@@ -1453,7 +1455,7 @@ KansoWriter.prototype._checkForLists = function()
  * Start the autosave timer
  *
  */
-KansoWriter.prototype._startAutoSaver = function()
+ServeWriter.prototype._startAutoSaver = function()
 {
     var _this = this;
 
@@ -1483,7 +1485,7 @@ KansoWriter.prototype._startAutoSaver = function()
  * Clear the autosave timer
  *
  */
-KansoWriter.prototype._clearAutoSave = function()
+ServeWriter.prototype._clearAutoSave = function()
 {
     clearTimeout(_autoSaveTimer);
 }
@@ -1493,7 +1495,7 @@ KansoWriter.prototype._clearAutoSave = function()
  *
  * @return string
  */
-KansoWriter.prototype._tableTemplate = function()
+ServeWriter.prototype._tableTemplate = function()
 {
      return [
         '\n| Tables        | Are           | Cool  |\n',
@@ -1507,7 +1509,7 @@ KansoWriter.prototype._tableTemplate = function()
  * Bind context menu click
  *
  */
-KansoWriter.prototype._bindContextMenu = function()
+ServeWriter.prototype._bindContextMenu = function()
 {
     var _this  = this;
     var editor = this.api.code_editor;
@@ -1704,13 +1706,13 @@ KansoWriter.prototype._bindContextMenu = function()
  *
  * @param event e JavaScript contextmenu click on writer
  */
-KansoWriter.prototype._handleContextMenuVisibility = function(e)
+ServeWriter.prototype._handleContextMenuVisibility = function(e)
 {
     e = e || window.event;
 
     e.preventDefault();
 
-    var _this = Modules.get('KansoWriter');
+    var _this = Hubble.require('ServeWriter');
 
     _this._styleContextMenu(e);
 
@@ -1731,7 +1733,7 @@ KansoWriter.prototype._handleContextMenuVisibility = function(e)
  *
  * @param event e JavaScript contextmenu click on writer
  */
-KansoWriter.prototype._styleContextMenu = function(e)
+ServeWriter.prototype._styleContextMenu = function(e)
 {   
     if (this.api.code_editor.somethingSelected())
     {
@@ -1776,18 +1778,18 @@ KansoWriter.prototype._styleContextMenu = function(e)
  * Hide the context menu
  *
  */
-KansoWriter.prototype._hideContextMenu = function(e)
+ServeWriter.prototype._hideContextMenu = function(e)
 {
     Helper.removeClass(_contextMenuEl, 'active');
     Helper.removeClass(document.body, 'context-menu-active');
-    window.removeEventListener('click', Modules.get('KansoWriter')._hideContextMenu);
+    window.removeEventListener('click', Hubble.require('ServeWriter')._hideContextMenu);
 }
 
 /**
  * Handle context menu suggestions
  *
  */
-KansoWriter.prototype._contextMenuSuggestions = function()
+ServeWriter.prototype._contextMenuSuggestions = function()
 {
     var list       = Helper.$('.js-suggestions ul');
     var selection  = this.api.code_editor.getSelection().trim();
@@ -1826,7 +1828,7 @@ KansoWriter.prototype._contextMenuSuggestions = function()
  * Initialize Offline.js
  *
  */
-KansoWriter.prototype._initOfflineJs = function()
+ServeWriter.prototype._initOfflineJs = function()
 {   
     var _this = this;
     var offlineOverlay = Helper.$('.js-offline-overlay');
@@ -1867,6 +1869,6 @@ KansoWriter.prototype._initOfflineJs = function()
  * Instantiate and boot
  *
  */
-Modules.singleton('KansoWriter', KansoWriter).get('KansoWriter')
-
+ Hubble.dom().register('ServeWriter', ServeWriter, true);
+ 
 })();

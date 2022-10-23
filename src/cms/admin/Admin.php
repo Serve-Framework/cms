@@ -99,7 +99,7 @@ class Admin
             // Filter the page title
             $this->Filters->on('adminPageTitle', function($_title) use ($title, $isPage)
             {
-                return Humanizer::pluralize(ucfirst($title)) . ' | Serve';
+                return Humanizer::pluralize(ucfirst($title)) . ' | Serve CMS';
             });
             // Add the custom post type to the model
             $this->Filters->on('adminCustomPostType', function() use ($isPage, $slug)
@@ -228,7 +228,7 @@ class Admin
         {
             if ($isPage)
             {
-                return ucfirst($title) . ' | Serve';
+                return ucfirst($title) . ' | Serve CMS';
             }
 
             return $_title;

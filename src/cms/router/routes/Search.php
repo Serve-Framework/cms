@@ -5,13 +5,50 @@
  * @license   https://github.com/serve-framework/cms/blob/master/LICENSE
  */
 
+namespace cms\router\routes;
+
 use cms\router\controllers\Content;
-use cms\router\models\Search;
+use cms\router\models\Search as Model;
 
 /**
- * CMS Application search routes.
+ * CMS search routes.
  *
  * @author Joe J. Howard
  */
-$router->get('/search-results/',             Content::class . '@apply', Search::class);
-$router->get('/search-results/page/(:num)/', Content::class . '@apply', Search::class);
+class Search extends RoutesBase
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected $routes =
+    [
+        [
+            'method'     => 'get',
+            'route'      => '/search-results/',
+            'controller' => Content::class . '@apply',
+            'model'      => Model::class
+        ],
+        [
+            'method'     => 'get',
+            'route'      => '/search-results/page/(:num)/',
+            'controller' => Content::class . '@apply',
+            'model'      => Model::class
+        ],
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function shouldRoute(): bool
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function preFilterRoutes(): void
+    {
+    
+    }
+}

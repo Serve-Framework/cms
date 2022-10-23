@@ -1,4 +1,3 @@
-
 .dz-filename, .dz-size {
   display: none !important;
 }
@@ -11,10 +10,12 @@
   height: 150px;
   overflow: hidden;
 }
+
 .hero-drop-zone {
   position: relative;
   overflow: hidden;
 }
+
 .hero-drop-zone .upload-prompt {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -30,6 +31,7 @@
   left: 0;
   width: 100%;
 }
+
 .dz-started .upload-prompt {
   display: none;
 }
@@ -38,8 +40,8 @@
   width: 80px;
   height: 80px;
   fill: #cbd0d5;
-      margin: 0 auto;
-    display: block;
+  margin: 0 auto;
+  display: block;
 }
 
 .hero-drop-zone .upload-prompt p {
@@ -71,3 +73,5 @@
 .hero-drop-zone img {
   width: 100%;
 }
+
+/*# sourceMappingURL=dropzone.css.map */

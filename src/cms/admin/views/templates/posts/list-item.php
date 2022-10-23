@@ -7,7 +7,7 @@ use serve\utility\Str;
 <div class="row list-row">
 	<div class="media">
 		<div class="media-left">
-			<div class="form-field">    
+			<div class="form-field">
 		        <span class="checkbox checkbox-primary">
 		            <input type="checkbox" class="js-bulk-action-cb" name="posts[]" id="cb-article-<?php echo $article->id; ?>" value="<?php echo $article->id; ?>" />
 		            <label for="cb-article-<?php echo $article->id; ?>"></label>
@@ -21,32 +21,31 @@ use serve\utility\Str;
 	            </a>
 	        </div>
 
-	        <span class="color-gray">
+	        <span class="color-gray-light">
 	        	<span>ID:<?php echo $article->id; ?></span>
 	        	<span class="p6">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 	        	<span><?php echo Humanizer::timeAgo($article->created); ?> ago</span>
 	        	<span class="p6">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-	        	In <a class="color-gray text-underline" href="/admin/<?php echo $postSlug; ?>?category=<?php echo $article->category->id; ?>">
+	        	In <a class="color-secondary" href="/admin/<?php echo $postSlug; ?>?category=<?php echo $article->category->id; ?>">
 					<?php echo $article->category->name; ?>
 				</a>
 				<span class="p6">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 				<span>With <?php echo comments_number($article->id); ?> Comments</span>
 	        	<br>
-	        	<span>By <a class="color-gray text-underline" href="/admin/<?php echo $postSlug; ?>?author=<?php echo $article->author_id; ?>">
+	        	<span>By <a class="color-secondary" href="/admin/<?php echo $postSlug; ?>?author=<?php echo $article->author_id; ?>">
 					<?php echo $article->author->name; ?>
 				</a></span>
 				<span class="p6">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-				<span>At&nbsp;<a class="color-gray text-underline" target="_blank" href="<?php echo the_permalink($article->id); ?>">/<?php echo $article->slug; ?></a></span>
+				<span>At&nbsp;<a class="color-secondary" target="_blank" href="<?php echo the_permalink($article->id); ?>">/<?php echo $article->slug; ?></a></span>
 	        </span>
 	        <div class="margin-xs-n">
-	        	<span class="glyph-icon glyph-icon-tags color-gray"></span>&nbsp;&nbsp;
 		        <?php foreach ($article->tags as $_tag) : ?>
-		        	<a class="label label-outline" style="opacity: 0.5" href="/admin/<?php echo $postSlug; ?>?tag=<?php echo $_tag->id; ?>">
-						<?php echo $_tag->name; ?>
+		        	<a class="chip chip-outline chip-on-primary chip-sm" href="/admin/<?php echo $postSlug; ?>?tag=<?php echo $_tag->id; ?>">
+						<span class="chip-text"><?php echo $_tag->name; ?></span>
 					</a>&nbsp;&nbsp;
 		        <?php endforeach; ?>
 		    </div>
-		    <div class="color-gray p5 roof-xs">
+		    <div class="color-gray-light p6 roof-xs">
 	       		<?php echo Str::reduce($article->excerpt, 100, '...'); ?>
 	       	</div>
 	       	<div class="post-edit-wrap collapsed" id="post-edit-<?php echo $article->id; ?>">
@@ -78,22 +77,22 @@ use serve\utility\Str;
 	       	</div>
 		</div>
 		<div class="media-right nowrap">
-			<button class="btn btn-pure btn-xs tooltipped tooltipped-n" data-tooltip="Duplicate <?php echo strtolower($postType); ?>" onclick="document.getElementById('duplicate-post-form-<?php echo $article->id; ?>').submit()">
+			<button class="btn btn-pure btn-xs btn-circle tooltipped tooltipped-n" data-tooltip="Duplicate <?php echo strtolower($postType); ?>" onclick="document.getElementById('duplicate-post-form-<?php echo $article->id; ?>').submit()">
 				<span class="glyph-icon glyph-icon-copy icon-md"></span>
 			</button>
-			<a href="#" class="btn btn-pure btn-xs tooltipped tooltipped-n js-collapse" data-collapse-target="post-edit-<?php echo $article->id; ?>" data-tooltip="Quick edit <?php echo strtolower($postType); ?>">
+			<a href="#" class="btn btn-pure btn-xs btn-circle tooltipped tooltipped-n js-collapse" data-collapse-target="post-edit-<?php echo $article->id; ?>" data-tooltip="Quick edit <?php echo strtolower($postType); ?>">
 				<span class="glyph-icon glyph-icon-pencil icon-md"></span>
 			</a>
-			<a href="/admin/writer/?id=<?php echo $article->id; ?>" class="btn btn-pure btn-xs tooltipped tooltipped-n" data-tooltip="Open <?php echo strtolower($postType); ?> in writer" style="margin-top: 6px;">
+			<a href="/admin/writer/?id=<?php echo $article->id; ?>" class="btn btn-pure btn-xs btn-circle tooltipped tooltipped-n" data-tooltip="Open <?php echo strtolower($postType); ?> in writer" style="margin-top: 6px;">
 				<span class="glyph-icon glyph-icon-align-left icon-md"></span>
 			</a>
 			<div class="form-field inline-block">
-				<span class="tooltipped tooltipped-n" data-tooltip="<?php echo ($article->status === 'published') ? 'Draft' : 'Published'; ?>">
-					<input onchange="document.getElementById('status-switch-form-<?php echo $article->id; ?>').submit()" type="checkbox" id="status-switch-<?php echo $article->id; ?>" name="posts[]" value="<?php echo $article->id; ?>" class="switch switch-success" <?php if ($article->status === 'published') echo 'checked'; ?>>	
+				<span class="tooltipped tooltipped-n" data-tooltip="<?php echo ($article->status === 'published') ? 'Draft' : 'Publish'; ?>">
+					<input onchange="document.getElementById('status-switch-form-<?php echo $article->id; ?>').submit()" type="checkbox" id="status-switch-<?php echo $article->id; ?>" name="posts[]" value="<?php echo $article->id; ?>" class="switch switch-primary" <?php if ($article->status === 'published') echo 'checked'; ?>>	
 					<label for="status-switch-<?php echo $article->id; ?>"></label>
 				</span>
 	        </div>
-	        <a href="#" class="btn btn-pure btn-xs btn-danger tooltipped tooltipped-n js-confirm-delete" data-item="post" data-form="delete-form-<?php echo $article->id; ?>" data-tooltip="Delete <?php echo $postType; ?>" style="margin-top: 6px;">
+	        <a href="#" class="btn btn-pure btn-xs btn-circle btn-danger tooltipped tooltipped-n js-confirm-delete" data-item="post" data-form="delete-form-<?php echo $article->id; ?>" data-tooltip="Delete <?php echo $postType; ?>" style="margin-top: 6px;">
 				<span class="glyph-icon glyph-icon-trash-o icon-md"></span>
 			</a>
 			<form method="post" id="duplicate-post-form-<?php echo $article->id; ?>" style="display: none">

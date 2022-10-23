@@ -9,15 +9,17 @@ namespace cms\router\models;
 
 use serve\common\SqlBuilderTrait;
 use serve\ioc\ContainerAwareTrait;
+use serve\mvc\model\Model;
 
 /**
  * CMS query filter base.
  *
  * @author Joe J. Howard
  */
-abstract class FilterBase
+abstract class FilterBase extends Model
 {
     use SqlBuilderTrait;
+    
     use ContainerAwareTrait;
 
     /**

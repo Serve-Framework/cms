@@ -48,10 +48,10 @@ class Application extends BaseApplication
 
 		$this->notFoundHandling();
 		
-		if ($this->container->Installer->isInstalled())
+		/*if ($this->container->Installer->isInstalled())
 		{
 			$this->applyRoutes();
-		}
+		}*/
     }
 
 	/**
@@ -63,14 +63,6 @@ class Application extends BaseApplication
 		{
 			$this->container->Access->block();
 		}
-	}
-
-	/**
-	 * Apply the CMS routes.
-	 */
-	protected function applyRoutes(): void
-	{
-		include_once dirname(__DIR__) . '/router/Routes.php';
 	}
 
     /**

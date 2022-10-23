@@ -17,11 +17,18 @@ use serve\mvc\controller\Controller;
 abstract class BaseController extends Controller
 {
 	/**
-	 * The name of the request.
+	 * The page template to load.
 	 *
 	 * @var string
 	 */
-	protected $requestName;
+	protected $template;
+
+	/**
+	 * The admin request type/name
+	 *
+	 * @var string
+	 */
+	protected $pageTitle;
 
 	/**
 	 * Variables to be passed to the view.
@@ -31,39 +38,9 @@ abstract class BaseController extends Controller
 	protected $viewVars = [];
 
 	/**
-	 * Initialize the admin panel.
-	 *
-	 * @param string $name Identifying name of the requested page
-	 */
-	protected function init(string $name): void
-	{
-		// Save the request name
-		$this->requestName = $name;
-
-		// Add to query
-		$this->Query->requestType = 'admin';
-
-		// Initialize the model
-		$this->model->init($this->requestName);
-
-		// Admin panel has been initialized
-		$this->Events->fire('adminInit', $this->requestName);
-	}
-
-	/**
-	 * Check if the client is logged in.
-	 *
-	 * @return bool
-	 */
-	protected function isLoggedIn(): bool
-	{
-		return $this->Gatekeeper->isLoggedIn() && $this->Gatekeeper->isAdmin();
-	}
-
-	/**
 	 * Dispatch the request.
 	 */
-	protected function dispatch()
+	public function dispatch(): void
 	{
 		// Disabled HTTP caching
 		$this->Response->disableCaching();
@@ -94,7 +71,9 @@ abstract class BaseController extends Controller
 				}
 			}
 
-			return $this->Response->notFound();
+			$this->Response->notFound();
+
+			return;
 		}
 
 		// Regular POST requests
@@ -108,7 +87,9 @@ abstract class BaseController extends Controller
 
 				if ($response === false)
 				{
-					return $this->Response->notFound();
+					$this->Response->notFound();
+
+					return;
 				}
 
 				$this->viewVars['POST_RESPONSE'] = $response;
@@ -123,15 +104,19 @@ abstract class BaseController extends Controller
 
 			if ($response === false || !is_array($response))
 			{
-				return $this->Response->notFound();
+				$this->Response->notFound();
+
+				return;
 			}
 
 			$this->viewVars = array_merge($this->viewVars, $response);
 
-			return $this->render();
+			$this->render();
+
+			return;
 		}
 
-		return $this->Response->notFound();
+		$this->Response->notFound();
 	}
 
     /**
@@ -143,11 +128,13 @@ abstract class BaseController extends Controller
 
     	$vars['USER'] = $this->Gatekeeper->getUser();
 
-    	$vars['ADMIN_PAGE_TYPE'] = $this->requestName;
+    	$vars['ADMIN_PAGE_TEMPLATE'] = $this->template;
+
+    	$vars['ADMIN_PAGE_TITLE'] = $this->pageTitle;
 
     	$vars['ACCESS_TOKEN'] = $this->Response->session()->token()->get();
 
-        $template = SERVE_CMS_PATH . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'admin.php';
+        $template = dirname(__DIR__) . '/views/admin.php';
 
         $this->Response->body()->set($this->Response->view()->display($template, $vars));
     }

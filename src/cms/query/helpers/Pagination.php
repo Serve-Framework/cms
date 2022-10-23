@@ -23,7 +23,7 @@ class Pagination extends Helper
      * @param  array|null $args Array of display arguments (optional) (default NULL)
      * @return string
      */
-    public function pagination_links(array $args = null): string
+    public function pagination_links(?array $args = null): string
     {
         // Default options
         $options =

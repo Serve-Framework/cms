@@ -15,13 +15,6 @@ abstract class BaseModel extends Model
 	use SqlBuilderTrait;
 
 	/**
-	 * Identifying name of the requested page.
-	 *
-	 * @var string
-	 */
-	protected $requestName;
-
-	/**
 	 * POST variables.
 	 *
 	 * @var array
@@ -29,29 +22,33 @@ abstract class BaseModel extends Model
 	protected $post;
 
 	/**
+     * Constructor.
+     */
+    public function __construct()
+    {
+    	$this->post = $this->Request->fetch();
+    }
+
+	/**
 	 * On HTTP POST.
+	 * 
+	 * @return array|false
 	 */
-	abstract public function onPOST();
+	abstract public function onPOST() : array|false;
 
 	/**
 	 * On HTTP AJAX.
+	 * 
+	 * @return array|false
 	 */
-	abstract public function onAJAX();
+	abstract public function onAJAX() : array|false;
 
 	/**
 	 * On HTTP GET.
+	 * 
+	 * @return array|false
 	 */
-	abstract public function onGET();
-
-	/**
-	 * Initialize internal vars.
-	 */
-	public function init(string $requestName): void
-	{
-		$this->requestName = $requestName;
-
-    	$this->post = $this->Request->fetch();
-	}
+	abstract public function onGET() : array|false;
 
 	/**
 	 * Is the current client logged in ?
@@ -77,19 +74,19 @@ abstract class BaseModel extends Model
 
 		if ($class === 'danger')
 		{
-			$icon = 'times';
+			$icon = 'cross2';
 		}
 		elseif ($class === 'success')
 		{
-			$icon = 'check';
+			$icon = 'checkmark';
 		}
 		elseif ($class === 'info')
 		{
-			$icon = 'info-circle';
+			$icon = 'bell';
 		}
 		elseif ($class === 'warning')
 		{
-			$icon = 'exclamation-triangle';
+			$icon = 'power';
 		}
 
 		return

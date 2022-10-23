@@ -5,31 +5,75 @@
  * @license   https://github.com/serve-framework/cms/blob/master/LICENSE
  */
 
-use cms\router\controllers\Content as ContentController;
-use cms\router\models\Home as HomeModel;
-use cms\router\models\Homepage as HomepageModel;
+namespace cms\router\routes;
+
+use cms\router\controllers\Content as Controller;
+use cms\router\models\Home as Model;
 
 /**
- * CMS Application home routes.
+ * CMS home routes.
  *
  * @author Joe J. Howard
  */
-
-// Homepage
-$router->get('/',             ContentController::class . '@apply', HomeModel::class);
-$router->get('/page/(:num)/', ContentController::class . '@apply', HomeModel::class);
-$router->get('/feed/',        ContentController::class . '@rss',   HomeModel::class);
-$router->get('/feed/rss/',    ContentController::class . '@rss',   HomeModel::class);
-$router->get('/feed/atom/',   ContentController::class . '@rss',   HomeModel::class);
-$router->get('/feed/rdf/',    ContentController::class . '@rss',   HomeModel::class);
-
-// Blog Homepage
-if (!empty($blogPrefix))
+class Home extends RoutesBase
 {
-	$router->get("$blogPrefix/",             ContentController::class . '@apply', HomepageModel::class);
-	$router->get("$blogPrefix/page/(:num)/", ContentController::class . '@apply', HomepageModel::class);
-	$router->get("$blogPrefix/feed/",        ContentController::class . '@rss',   HomepageModel::class);
-	$router->get("$blogPrefix/feed/rss/",    ContentController::class . '@rss',   HomepageModel::class);
-	$router->get("$blogPrefix/feed/atom/",   ContentController::class . '@rss',   HomepageModel::class);
-	$router->get("$blogPrefix/feed/rdf/",    ContentController::class . '@rss',   HomepageModel::class);
+    /**
+     * {@inheritdoc}
+     */
+    protected $routes =
+    [
+        [
+            'method'     => 'get',
+            'route'      => '/',
+            'controller' => Controller::class . '@apply',
+            'model'      => Model::class
+        ],
+        [
+            'method'     => 'get',
+            'route'      => '/page/(:num)/',
+            'controller' => Controller::class . '@apply',
+            'model'      => Model::class
+        ],
+        [
+            'method'     => 'get',
+            'route'      => '/feed/',
+            'controller' => Controller::class . '@rss',
+            'model'      => Model::class
+        ],
+        [
+            'method'     => 'get',
+            'route'      => '/feed/rss/',
+            'controller' => Controller::class . '@rss',
+            'model'      => Model::class
+        ],
+        [
+            'method'     => 'get',
+            'route'      => '/feed/atom/',
+            'controller' => Controller::class . '@rss',
+            'model'      => Model::class
+        ],
+        [
+            'method'     => 'get',
+            'route'      => '/feed/rdf.',
+            'controller' => Controller::class . '@rss',
+            'model'      => Model::class
+        ],
+        
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function shouldRoute(): bool
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function preFilterRoutes(): void
+    {
+       
+    }
 }

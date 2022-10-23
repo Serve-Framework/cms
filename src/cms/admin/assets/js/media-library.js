@@ -3,8 +3,8 @@
     // VARS
     /********************************************************************************************/
     
-    var Helper   = Modules.get('JSHelper');
-    var Ajax     = Modules.require('Ajax');
+    var Helper   = Hubble.helper();
+    var Ajax     = Hubble.require('Ajax');
     var ajaxURL  = window.location.href.replace(/admin(.+)/, 'admin/media-library/');
     var imgTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
 
@@ -148,7 +148,7 @@
      * Display the library
      */
     MediaLibrary.prototype._showLibrary = function(e) {
-        var self = Modules.get('MediaLibrary');
+        var self = Hubble.require('MediaLibrary');
         Helper.addClass(self.wrapper.parentNode, 'active');
         Helper.addClass(document.body, 'hide-overflow');
 
@@ -166,7 +166,7 @@
     }
 
     MediaLibrary.prototype._onImageClick = function(e) {
-        var self = Modules.get('MediaLibrary');
+        var self = Hubble.require('MediaLibrary');
         e = e || window.event;
         var target = e.target;
         var item   = false;
@@ -311,7 +311,7 @@
 
         var self = this;
         var id    = this._fileIdInput.value;
-        Modules.require('Modal', {
+        Hubble.require('Modal', {
             type             : 'danger',
             header           : 'danger',
             icon             : 'exclamation',
@@ -358,7 +358,7 @@
             {
                 self._submitting = false;
                 Helper.removeClass(self._submitUpdateTrigger, 'active');
-                Modules.require('Notifications', {
+                Hubble.require('Notifications', {
                     type : 'success',
                     msg  : 'Media info successfully updated!',
                 });
@@ -370,7 +370,7 @@
         function(error) {
             self._submitting = false;
             Helper.removeClass(self._submitUpdateTrigger, 'active');
-            Modules.require('Notifications', {
+            Hubble.require('Notifications', {
                 type : 'danger',
                 msg  : 'There was an error processing your request.',
             });
@@ -773,13 +773,13 @@
     // WRITER
     /********************************************************************************************/
     MediaLibrary.prototype._insertIntoPost = function() {
-        var self   = Modules.get('MediaLibrary');
+        var self   = Hubble.require('MediaLibrary');
 
         var URL    = self._fileURLInput.value;
         var title  = self._fileTitleInput.value;
         var alt    = self._fileAltInput.value;
         var size   = Helper.getInputValue(self._sizeSelect);
-        var writer = Modules.get('KansoWriter');
+        var writer = Hubble.require('KansoWriter');
         var ext    = Helper.$('#media_url', self._detailsForm).value;
         var linkTo = Helper.getInputValue(self._linkToSelect);
         var blogLocation = self.wrapper.dataset.blogLocation || false;
@@ -854,7 +854,7 @@
      * Hide the library
      */
     MediaLibrary.prototype._hideLibrary = function(e) {
-        var self = Modules.get('MediaLibrary');
+        var self = Hubble.require('MediaLibrary');
         self._hideMediaDetails();
         Helper.removeClass(self.wrapper.parentNode, 'active');
         Helper.removeClass(self.wrapper, 'feature-image');
@@ -900,7 +900,7 @@
         };
     }
     
-     // Load into container and invoke
-    Modules.singleton('MediaLibrary', MediaLibrary).require('MediaLibrary');
+    // Load into container and invoke
+    Hubble.dom().register('MediaLibrary', MediaLibrary, true);
 
 }());

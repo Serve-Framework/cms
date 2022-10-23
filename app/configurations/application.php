@@ -136,7 +136,7 @@ return
 			'\serve\application\services\framework\OnionService',
 			'\serve\application\services\framework\DatabaseService',
 			'\serve\application\services\framework\MVCService',
-            		'\serve\application\services\framework\PixlService',
+            '\serve\application\services\framework\PixlService',
 			'\serve\application\services\framework\CrawlerService',
 			'\serve\application\services\framework\DeploymentService',
 			'\serve\application\services\framework\AccessService',
@@ -170,12 +170,12 @@ return
 		[
 			'\cms\application\services\WrapperService',
 			'\cms\application\services\InstallerService',
-			'\cms\application\services\CrmService',
 			'\cms\application\services\QueryService',
 			'\cms\application\services\AdminService',
 			'\cms\application\services\AnalyticsService',
 			'\cms\application\services\SchemaService',
 			'\cms\application\services\ShortcodeService',
+			'\cms\application\services\RoutesService',
 		],
 
 		/*

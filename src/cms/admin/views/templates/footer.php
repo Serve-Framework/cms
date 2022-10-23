@@ -1,6 +1,8 @@
+<!-- ACCESS TOKEN -->
+<input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>" class="js-access-token">
 
 <!-- FOOTER SCRIPTS -->
-<?php echo admin_footer_scripts(); ?>
+<?php echo serve_footer(); ?>
 
 </body>
 </html>

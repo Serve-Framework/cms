@@ -53,7 +53,6 @@ $SERVE_DEFAULTS_USERS_TABLE =
 [
 	'id'           => 'INTEGER | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
 	'username'     => 'VARCHAR(255)',
-	'visitor_id'   => 'VARCHAR(255)',
 	'email'        => 'VARCHAR(255)',
 	'hashed_pass'  => 'VARCHAR(255)',
 	'name'         => 'VARCHAR(255)',
@@ -69,51 +68,8 @@ $SERVE_DEFAULTS_USERS_TABLE =
 	'last_online'  => 'VARCHAR(255)',
 	'email_notifications' => 'BOOLEAN | DEFAULT TRUE',
 	'access_token'        => 'VARCHAR(255)',
-	'SERVE_register_key'  => 'VARCHAR(255)',
-	'SERVE_password_key'  => 'VARCHAR(255)',
-];
-
-// Default CRM visitors table
-$SERVE_DEFAULTS_VISITORS_TABLE =
-[
-	'id'            => 'INTEGER | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'visitor_id'    => 'VARCHAR(255)',
-	'ip_address'    => 'VARCHAR(255)',
-	'name'          => 'VARCHAR(255)',
-	'email'         => 'VARCHAR(255)',
-	'made_purchase' => 'BOOLEAN | DEFAULT FALSE',
-	'last_active'   => 'INTEGER | UNSIGNED | DEFAULT 0',
-	'is_bot'        => 'BOOLEAN | DEFAULT FALSE',
-	'user_agent'    => 'VARCHAR(255)',
-];
-
-// Default CRM visits table
-$SERVE_DEFAULTS_VISITS_TABLE =
-[
-	'id'           => 'INTEGER | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'visitor_id'   => 'VARCHAR(255)',
-	'ip_address'   => 'VARCHAR(255)',
-	'page'         => 'VARCHAR(255)',
-	'date'         => 'INTEGER | UNSIGNED | DEFAULT 0',
-	'end'          => 'INTEGER | UNSIGNED | DEFAULT 0',
-	'medium'       => 'VARCHAR(255)',
-	'channel'      => 'VARCHAR(255)',
-	'campaign'     => 'VARCHAR(255)',
-	'keyword'      => 'VARCHAR(255)',
-	'creative'     => 'VARCHAR(255)',
-	'browser'      => 'VARCHAR(255)',
-];
-
-// Default CRM visits table
-$SERVE_DEFAULTS_VISIT_ACTIONS_TABLE =
-[
-	'id'                 => 'INTEGER | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'visit_id'           => 'INTEGER | UNSIGNED',
-	'visitor_id'         => 'VARCHAR(255)',
-	'action_name'        => 'VARCHAR(255)',
-	'action_description' => 'VARCHAR(255)',
-	'page'               => 'VARCHAR(255)',
-	'date'               => 'INTEGER | UNSIGNED | DEFAULT 0',
+	'register_key'  => 'VARCHAR(255)',
+	'password_key'  => 'VARCHAR(255)',
 ];
 
 // Default comments table
@@ -173,116 +129,6 @@ $SERVE_DEFAULTS_MEDIA_TABLE =
 	'dimensions'   => 'VARCHAR(255)',
 	'date'         => 'INTEGER | UNSIGNED',
 	'uploader_id'  => 'INTEGER | UNSIGNED',
-];
-
-// Default media table
-$SERVE_DEFAULTS_PAYMENT_TOKENS_TABLE =
-[
-	'id'           => 'INTEGER | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'user_id'  	   => 'INTEGER | UNSIGNED',
-	'token'  	   => 'VARCHAR(255)',
-];
-
-// Default shopping cart items
-$SERVE_DEFAULTS_SHOPPING_CART_TABLE =
-[
-	'id'           => 'INTEGER(11) | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'user_id'  	   => 'INTEGER(11) | UNSIGNED',
-	'session_id'   => 'VARCHAR(255)',
-	'contents'     => 'TEXT',
-];
-
-// Shipping addresses
-$SERVE_DEFAULTS_SHIPPING_ADDRESS_TABLE =
-[
-	'id'               => 'INTEGER(11) | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'user_id'  	       => 'INTEGER(11) | UNSIGNED',
-	'email'            => 'VARCHAR(255)',
-	'first_name'       => 'VARCHAR(255)',
-	'last_name'        => 'VARCHAR(255)',
-	'street_address_1' => 'VARCHAR(255)',
-	'street_address_2' => 'VARCHAR(255)',
-	'suburb'           => 'VARCHAR(255)',
-	'zip_code'         => 'VARCHAR(255)',
-	'state'            => 'VARCHAR(255)',
-	'country'          => 'VARCHAR(255)',
-	'telephone'        => 'VARCHAR(255)',
-];
-
-// Transaction table
-$SERVE_DEFAULTS_TRANSACTION_TABLE =
-[
-	'id'                => 'INTEGER(11) | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'user_id'  	        => 'INTEGER(11) | UNSIGNED',
-	'stripe_session_id' => 'VARCHAR(255)',
-	'reference'         => 'VARCHAR(255)',
-	'shipping_id'       => 'INTEGER(11) | UNSIGNED',
-	'date'              => 'INTEGER(11) | UNSIGNED',
-	'status'            => 'VARCHAR(255)',
-	'shipped'           => 'BOOLEAN | DEFAULT FALSE',
-	'shipped_date'      => 'INTEGER(11) | UNSIGNED',
-	'tracking_code'     => 'VARCHAR(255)',
-	'eta'               => 'INTEGER(11) | UNSIGNED',
-	'card_type'         => 'VARCHAR(255)',
-	'card_last_four'    => 'INTEGER(11) | UNSIGNED',
-	'card_expiry'       => 'VARCHAR(255)',
-	'items'             => 'TEXT',
-	'sub_total'         => 'VARCHAR(255)',
-	'shipping_costs'    => 'VARCHAR(255)',
-	'coupon'            => 'VARCHAR(255)',
-	'total'             => 'VARCHAR(255)',
-];
-
-// Loyalty points table
-$SERVE_DEFAULTS_LOYALTY_POINTS_TABLE =
-[
-	'id'            => 'INTEGER(11) | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'user_id'  	    => 'INTEGER(11) | UNSIGNED',
-	'description'   => 'VARCHAR(255)',
-	'date'          => 'INTEGER(11) | UNSIGNED',
-	'points_add'    => 'INTEGER(11) | UNSIGNED',
-	'points_minus'  => 'INTEGER(11) | UNSIGNED',
-];
-
-// Loyalty coupons table
-$SERVE_DEFAULTS_LOYALTY_COUPONS_TABLE =
-[
-	'id'            => 'INTEGER(11) | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'user_id'  	    => 'INTEGER(11) | UNSIGNED',
-	'name'          => 'VARCHAR(255)',
-	'description'   => 'VARCHAR(255)',
-	'discount'      => 'INTEGER(11) | UNSIGNED',
-	'code'          => 'VARCHAR(255)',
-	'date'          => 'INTEGER(11) | UNSIGNED',
-	'used'          => 'BOOLEAN | DEFAULT FALSE',
-];
-
-// Product reviews table
-$SERVE_DEFAULTS_PRODUCT_REVIEWS_TABLE =
-[
-	'id'            => 'INTEGER(11) | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'comment_id'  	=> 'INTEGER(11) | UNSIGNED',
-	'product_id'  	=> 'INTEGER(11) | UNSIGNED',
-	'rating'        => 'INTEGER(11) | UNSIGNED',
-	'recommended'   => 'BOOLEAN | DEFAULT FALSE',
-];
-
-// Product review votes table
-$SERVE_DEFAULTS_PRODUCT_REVIEW_VOTES_TABLE =
-[
-	'id'          => 'INTEGER(11) | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'comment_id'  => 'INTEGER(11) | UNSIGNED',
-	'up_vote'     => 'BOOLEAN | DEFAULT FALSE',
-	'ip_address'  => 'VARCHAR(255)',
-];
-
-// Product review votes table
-$SERVE_DEFAULTS_USED_PUBLIC_COUPONS =
-[
-	'id'          => 'INTEGER(11) | UNSIGNED | PRIMARY KEY | UNIQUE | AUTO INCREMENT',
-	'user_id'     => 'INTEGER(11) | UNSIGNED',
-	'email'       => 'VARCHAR(255)',
-	'coupon_name' => 'VARCHAR(255)',
 ];
 
 // The default user entry

@@ -187,7 +187,6 @@ class Meta extends Helper
         if ($next_page && isset($next_page['title']))
         {
             return $next_page['title'];
-
         }
 
         return false;

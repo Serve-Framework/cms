@@ -1,34 +1,35 @@
 <div class="list-powers">
-	 
+
 	<!-- CHECK ALL -->
-	<div class="form-field">    
-        <span class="checkbox checkbox-primary">
-            <input type="checkbox" id="cb-article-checkall" class="js-list-check-all">
-            <label for="cb-article-checkall"></label>
-        </span>
-    </div>
+	<span class="checkbox checkbox-primary v-middle">
+        <input type="checkbox" id="cb-article-checkall" class="js-list-check-all">
+        <label for="cb-article-checkall"></label>
+    </span>
 
 	<!-- BULK ACTIONS -->
-	<form class="inline-block js-bulk-actions-form" method="post">
-		<div class="form-field field-group">
-	    	<select name="bulk_action">
-				<option value="" selected="">Bulk actions</option>
+	<form class="inline-block js-bulk-actions-form v-middle" method="post">
+		<input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>">
+		<div class="form-field field-group on-primary">
+	    	<select name="bulk_action" id="bulk_action">
+				<option value="" selected="">&nbsp;&nbsp;&nbsp;</option>
 				<option value="published">Publish</option>
 				<option value="draft">Draft</option>
 				<option value="delete">Delete</option>
 			</select>
-			<input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>">
-			<button type="submit" class="btn">Apply</button>
+			<label for="bulk_action">Bulk actions</label>
+			<button type="submit" class="btn btn-primary">Apply</button>
 	    </div>
 	</form>
 	
+	<!-- SPACER -->
 	<span>&nbsp;&nbsp;</span>
 	
     <!-- STATUS AND SORTS -->
-    <div class="btn-group inline-block">
+    <div class="inline-block v-middlek">
 
+    	<!-- SORT -->
 	    <div class="drop-container">
-		    <button type="button" class="btn btn-default btn-dropdown js-drop-trigger">
+		    <button type="button" class="btn btn-xs btn-primary btn-pure btn-dropdown js-drop-trigger">
 		        Sort
 		        &nbsp;<span class="caret-s"></span>
 		    </button>
@@ -47,8 +48,10 @@
 		        </div>
 		    </div>
 		</div>
+
+		<!-- STATUS -->
 		<div class="drop-container">
-		    <button type="button" class="btn btn-default btn-dropdown js-drop-trigger">
+		    <button type="button" class="btn btn-xs btn-primary btn-pure btn-dropdown js-drop-trigger">
 		        Status
 		        &nbsp;<span class="caret-s"></span>
 		    </button>
@@ -63,8 +66,10 @@
 		        </div>
 		    </div>
 		</div>
+
+		<!-- AUTHOR -->
 		<div class="drop-container">
-		    <button type="button" class="btn btn-default btn-dropdown js-drop-trigger">
+		    <button type="button" class="btn btn-xs btn-primary btn-pure btn-dropdown js-drop-trigger">
 		        Author
 		        &nbsp;<span class="caret-s"></span>
 		    </button>
@@ -84,8 +89,10 @@
 		        </div>
 		    </div>
 		</div>
+
+		<!-- CATEGORY -->
 		<div class="drop-container">
-		    <button type="button" class="btn btn-default btn-dropdown js-drop-trigger">
+		    <button type="button" class="btn btn-xs btn-primary btn-pure btn-dropdown js-drop-trigger">
 		        Category
 		        &nbsp;<span class="caret-s"></span>
 		    </button>
@@ -106,22 +113,24 @@
 		    </div>
 		</div>
 
-		<a href="/admin/<?php echo $postSlug; ?>/" class="btn <?php echo !$empty_queries ? 'btn-info' : ''; ?> tooltipped tooltipped-s" data-tooltip="Clear filters &amp; sorts">
-			<span class="glyph-icon glyph-icon-times"></span>
+		<!-- CLEAR -->
+		<a href="/admin/<?php echo $postSlug; ?>/" class="btn btn-xs btn-pure btn-primary tooltipped tooltipped-s" data-tooltip="Clear filters &amp; sorts" <?php echo !$empty_queries ? '' : 'style="display:none;"'; ?> >
+			<span class="glyph-icon glyph-icon-cross icon-xs"></span>
 		</a>
 	</div>
 
 	<!-- SEARCH -->
-	<form method="get" class="inline-block float-right">
-	    <div class="form-field field-group ">
-	        <input type="text" name="search" id="search" placeholder="Search..." value="<?php echo $queries['search']; ?>">
-	        <input type="hidden" name="status" value="<?php echo $queries['status']; ?>">
-	        <input type="hidden" name="sort" value="<?php echo $queries['sort']; ?>">
-	        <input type="hidden" name="author" value="<?php echo $queries['author']; ?>">
-	        <input type="hidden" name="category" value="<?php echo $queries['category']; ?>">
-	        <input type="hidden" name="tag" value="<?php echo $queries['tag']; ?>">
+	<form method="get" class="inline-block float-right v-middle">
+		<input type="hidden" name="status" value="<?php echo $queries['status']; ?>">
+        <input type="hidden" name="sort" value="<?php echo $queries['sort']; ?>">
+        <input type="hidden" name="author" value="<?php echo $queries['author']; ?>">
+        <input type="hidden" name="category" value="<?php echo $queries['category']; ?>">
+        <input type="hidden" name="tag" value="<?php echo $queries['tag']; ?>">
+	    <div class="form-field field-group on-primary">
+	        <input type="text" name="search" id="search" value="<?php echo $queries['search']; ?>">
+	       	<label for="search">Search</label>
 	        <button type="submit" class="btn btn-primary">
-	        	&nbsp;&nbsp;<span class="glyph-icon glyph-icon-search"></span>&nbsp;&nbsp;
+	        	&nbsp;&nbsp;<span class="glyph-icon glyph-icon-search icon-sm"></span>&nbsp;&nbsp;
 	        </button>
 	    </div>
 	</form>

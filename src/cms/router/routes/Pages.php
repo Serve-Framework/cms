@@ -5,17 +5,69 @@
  * @license   https://github.com/serve-framework/cms/blob/master/LICENSE
  */
 
-use cms\router\controllers\Content as ContentController;
-use cms\router\models\Page as PageModel;
+namespace cms\router\routes;
+
+use cms\router\controllers\Content as Controller;
+use cms\router\models\Page as Model;
 
 /**
- * CMS Application pages routes.
+ * CMS pages routes.
  *
  * @author Joe J. Howard
  */
+class Pages extends RoutesBase
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected $routes =
+    [
+        [
+            'method'     => 'get',
+            'route'      => '/(:any)/',
+            'controller' => Controller::class . '@apply',
+            'model'      => Model::class
+        ],
+        [
+            'method'     => 'get',
+            'route'      => '/(:any)/feed/',
+            'controller' => Controller::class . '@rss',
+            'model'      => Model::class
+        ],
+        [
+            'method'     => 'get',
+            'route'      => '/(:any)/feed/rss/',
+            'controller' => Controller::class . '@rss',
+            'model'      => Model::class
+        ],
+        [
+            'method'     => 'get',
+            'route'      => '/(:any)/feed/atom/',
+            'controller' => Controller::class . '@rss',
+            'model'      => Model::class
+        ],
+        [
+            'method'     => 'get',
+            'route'      => '/(:any)/feed/rdf.',
+            'controller' => Controller::class . '@rss',
+            'model'      => Model::class
+        ],
+        
+    ];
 
-$router->get('/(:any)/',          ContentController::class . '@apply', PageModel::class);
-$router->get('/(:any)/feed/',     ContentController::class . '@rss',   PageModel::class);
-$router->get('/(:any)/feed/rss',  ContentController::class . '@rss',   PageModel::class);
-$router->get('/(:any)/feed/atom', ContentController::class . '@rss',   PageModel::class);
-$router->get('/(:any)/feed/rdf',  ContentController::class . '@rss',   PageModel::class);
+    /**
+     * {@inheritdoc}
+     */
+    protected function shouldRoute(): bool
+    {
+        return true;
+    }
+
+     /**
+     * {@inheritdoc}
+     */
+    protected function preFilterRoutes(): void
+    {
+        
+    }
+}

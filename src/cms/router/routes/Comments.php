@@ -5,17 +5,45 @@
  * @license   https://github.com/serve-framework/cms/blob/master/LICENSE
  */
 
-use cms\router\controllers\Comments as CommentsController;
-use cms\router\models\Comments as CommentsModel;
+namespace cms\router\routes;
+
+use cms\router\controllers\Comments as Controller;
+use cms\router\models\Comments as Model;
 
 /**
- * CMS Application comments routes.
+ * CMS comments routes.
  *
  * @author Joe J. Howard
  */
-
-// Ajax Post Comments
-if ($config->get('cms.enable_comments') === true)
+class Comments extends RoutesBase
 {
-	$router->post('/comments/', CommentsController::class . '@addComment', CommentsModel::class);
+    /**
+     * {@inheritdoc}
+     */
+    protected $routes =
+    [
+        [
+            'method'     => 'post',
+            'route'      => '/comments/',
+            'controller' => Controller::class . '@addComment',
+            'model'      => Model::class
+        ],
+        
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function shouldRoute(): bool
+    {
+        return $this->config->get('cms.enable_comments') === true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function preFilterRoutes(): void
+    {
+       
+    }
 }

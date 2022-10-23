@@ -207,30 +207,6 @@ class Installer
 
         $SQL->CREATE_TABLE('post_meta', $SERVE_DEFAULTS_POST_META_TABLE);
 
-        $SQL->CREATE_TABLE('crm_visitors', $SERVE_DEFAULTS_VISITORS_TABLE);
-
-        $SQL->CREATE_TABLE('crm_visits', $SERVE_DEFAULTS_VISITS_TABLE);
-
-        $SQL->CREATE_TABLE('crm_visit_actions', $SERVE_DEFAULTS_VISIT_ACTIONS_TABLE);
-
-        $SQL->CREATE_TABLE('payment_tokens', $SERVE_DEFAULTS_PAYMENT_TOKENS_TABLE);
-
-        $SQL->CREATE_TABLE('shopping_carts', $SERVE_DEFAULTS_SHOPPING_CART_TABLE);
-
-        $SQL->CREATE_TABLE('shipping_addresses', $SERVE_DEFAULTS_SHIPPING_ADDRESS_TABLE);
-
-        $SQL->CREATE_TABLE('transactions', $SERVE_DEFAULTS_TRANSACTION_TABLE);
-
-        $SQL->CREATE_TABLE('loyalty_points', $SERVE_DEFAULTS_LOYALTY_POINTS_TABLE);
-
-        $SQL->CREATE_TABLE('loyalty_coupons', $SERVE_DEFAULTS_LOYALTY_COUPONS_TABLE);
-
-        $SQL->CREATE_TABLE('used_public_coupons', $SERVE_DEFAULTS_USED_PUBLIC_COUPONS);
-
-        $SQL->CREATE_TABLE('product_reviews', $SERVE_DEFAULTS_PRODUCT_REVIEWS_TABLE);
-
-        $SQL->CREATE_TABLE('product_review_votes', $SERVE_DEFAULTS_PRODUCT_REVIEW_VOTES_TABLE);
-
         $SQL->ALTER_TABLE('tags_to_posts')->MODIFY_COLUMN('post_id')->ADD_FOREIGN_KEY('posts', 'id');
         $SQL->ALTER_TABLE('tags_to_posts')->MODIFY_COLUMN('tag_id')->ADD_FOREIGN_KEY('tags', 'id');
 
