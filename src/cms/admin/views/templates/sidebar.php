@@ -10,7 +10,7 @@
 			<?php foreach (admin_sirebar_links() as $itemName => $item) : ?>
 			<li class="<?php echo $item['active'] ? 'active' : ''; ?>">
 				<?php if (!empty($item['children'])) : ?>
-				<span class="glyph-icon glyph-icon-chevron-down toggle-list js-toggle-down"></span>
+				<span class="glyph-icon glyph-icon-arrow-down5 toggle-list js-toggle-down"></span>
 				<?php endif; ?>
 				<a href="<?php echo $item['link']; ?>">
 					<span class="glyph-icon glyph-icon-<?php echo $item['icon']; ?>"></span>

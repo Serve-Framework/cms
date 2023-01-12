@@ -49,7 +49,7 @@ class Comments extends BaseModel
     /**
      * {@inheritdoc}
      */
-    public function onAJAX(): array|false
+    public function onAJAX(): array|false|string
     {
         return false;
     }
@@ -292,6 +292,7 @@ class Comments extends BaseModel
             if (Str::contains($search, ':'))
             {
                 $keys = explode(':', $search);
+                
                 if (in_array($keys[0], ['name', 'email', 'ip_address']))
                 {
                     $this->sql()->AND_WHERE($keys[0], 'LIKE', "%$keys[1]%");

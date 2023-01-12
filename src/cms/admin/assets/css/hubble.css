@@ -2978,6 +2978,102 @@ pre > code {
   padding: 40px;
 }
 
+.padding-xxs-n {
+  padding-top: 0.5rem;
+}
+
+.padding-xxs-e {
+  padding-right: 0.5rem;
+}
+
+.padding-xxs-s {
+  padding-bottom: 0.5rem;
+}
+
+.padding-xxs-w {
+  padding-left: 0.5rem;
+}
+
+.padding-xs-n {
+  padding-top: 1.5rem;
+}
+
+.padding-xs-e {
+  padding-right: 1.5rem;
+}
+
+.padding-xs-s {
+  padding-bottom: 1.5rem;
+}
+
+.padding-xs-w {
+  padding-left: 1.5rem;
+}
+
+.padding-sm-n {
+  padding-top: 3rem;
+}
+
+.padding-sm-e {
+  padding-right: 3rem;
+}
+
+.padding-sm-s {
+  padding-bottom: 3rem;
+}
+
+.padding-sm-w {
+  padding-left: 3rem;
+}
+
+.padding-md-n {
+  padding-top: 4.5rem;
+}
+
+.padding-md-e {
+  padding-right: 4.5rem;
+}
+
+.padding-md-s {
+  padding-bottom: 4.5rem;
+}
+
+.padding-md-w {
+  padding-left: 4.5rem;
+}
+
+.padding-lg-n {
+  padding-top: 6rem;
+}
+
+.padding-lg-e {
+  padding-right: 6rem;
+}
+
+.padding-lg-s {
+  padding-bottom: 6rem;
+}
+
+.padding-lg-w {
+  padding-left: 6rem;
+}
+
+.padding-xl-n {
+  padding-top: 8rem;
+}
+
+.padding-xl-e {
+  padding-right: 8rem;
+}
+
+.padding-xl-s {
+  padding-bottom: 8rem;
+}
+
+.padding-xl-w {
+  padding-left: 8rem;
+}
+
 .relative {
   position: relative;
 }
@@ -4973,104 +5069,80 @@ input[type=hidden] {
   color: #bebebe;
 }
 .form-field.focus input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.focus input:not(input[type=radio])::-webkit-input-placeholder,
 .form-field.focus textarea::-webkit-input-placeholder,
 .form-field.focus select::-webkit-input-placeholder, .form-field:focus-within input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field:focus-within input:not(input[type=radio])::-webkit-input-placeholder,
 .form-field:focus-within textarea::-webkit-input-placeholder,
 .form-field:focus-within select::-webkit-input-placeholder, .form-field.not-empty input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.not-empty input:not(input[type=radio])::-webkit-input-placeholder,
 .form-field.not-empty textarea::-webkit-input-placeholder,
 .form-field.not-empty select::-webkit-input-placeholder {
   opacity: 1;
   color: #bebebe;
 }
 .form-field.focus input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.focus input:not(input[type=radio])::-moz-placeholder,
 .form-field.focus textarea::-moz-placeholder,
 .form-field.focus select::-moz-placeholder, .form-field:focus-within input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field:focus-within input:not(input[type=radio])::-moz-placeholder,
 .form-field:focus-within textarea::-moz-placeholder,
 .form-field:focus-within select::-moz-placeholder, .form-field.not-empty input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.not-empty input:not(input[type=radio])::-moz-placeholder,
 .form-field.not-empty textarea::-moz-placeholder,
 .form-field.not-empty select::-moz-placeholder {
   opacity: 1;
   color: #bebebe;
 }
 .form-field.focus input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.focus input:not(input[type=radio]):-ms-input-placeholder,
 .form-field.focus textarea:-ms-input-placeholder,
 .form-field.focus select:-ms-input-placeholder, .form-field:focus-within input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field:focus-within input:not(input[type=radio]):-ms-input-placeholder,
 .form-field:focus-within textarea:-ms-input-placeholder,
 .form-field:focus-within select:-ms-input-placeholder, .form-field.not-empty input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.not-empty input:not(input[type=radio]):-ms-input-placeholder,
 .form-field.not-empty textarea:-ms-input-placeholder,
 .form-field.not-empty select:-ms-input-placeholder {
   opacity: 1;
   color: #bebebe;
 }
 .form-field.focus input:not([type=checkbox]):not(input[type=radio])::placeholder,
-.form-field.focus input:not(input[type=radio])::placeholder,
 .form-field.focus textarea::placeholder,
 .form-field.focus select::placeholder, .form-field:focus-within input:not([type=checkbox]):not(input[type=radio])::placeholder,
-.form-field:focus-within input:not(input[type=radio])::placeholder,
 .form-field:focus-within textarea::placeholder,
 .form-field:focus-within select::placeholder, .form-field.not-empty input:not([type=checkbox]):not(input[type=radio])::placeholder,
-.form-field.not-empty input:not(input[type=radio])::placeholder,
 .form-field.not-empty textarea::placeholder,
 .form-field.not-empty select::placeholder {
   opacity: 1;
   color: #bebebe;
 }
 .form-field.focus input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.focus input:not(input[type=radio])::-webkit-input-placeholder,
 .form-field.focus textarea::-webkit-input-placeholder,
 .form-field.focus select::-webkit-input-placeholder, .form-field:focus-within input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field:focus-within input:not(input[type=radio])::-webkit-input-placeholder,
 .form-field:focus-within textarea::-webkit-input-placeholder,
 .form-field:focus-within select::-webkit-input-placeholder, .form-field.not-empty input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.not-empty input:not(input[type=radio])::-webkit-input-placeholder,
 .form-field.not-empty textarea::-webkit-input-placeholder,
 .form-field.not-empty select::-webkit-input-placeholder {
   opacity: 1;
   color: #bebebe;
 }
 .form-field.focus input:not([type=checkbox]):not(input[type=radio]):-moz-placeholder,
-.form-field.focus input:not(input[type=radio]):-moz-placeholder,
 .form-field.focus textarea:-moz-placeholder,
 .form-field.focus select:-moz-placeholder, .form-field:focus-within input:not([type=checkbox]):not(input[type=radio]):-moz-placeholder,
-.form-field:focus-within input:not(input[type=radio]):-moz-placeholder,
 .form-field:focus-within textarea:-moz-placeholder,
 .form-field:focus-within select:-moz-placeholder, .form-field.not-empty input:not([type=checkbox]):not(input[type=radio]):-moz-placeholder,
-.form-field.not-empty input:not(input[type=radio]):-moz-placeholder,
 .form-field.not-empty textarea:-moz-placeholder,
 .form-field.not-empty select:-moz-placeholder {
   opacity: 1;
   color: #bebebe;
 }
 .form-field.focus input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.focus input:not(input[type=radio])::-moz-placeholder,
 .form-field.focus textarea::-moz-placeholder,
 .form-field.focus select::-moz-placeholder, .form-field:focus-within input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field:focus-within input:not(input[type=radio])::-moz-placeholder,
 .form-field:focus-within textarea::-moz-placeholder,
 .form-field:focus-within select::-moz-placeholder, .form-field.not-empty input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.not-empty input:not(input[type=radio])::-moz-placeholder,
 .form-field.not-empty textarea::-moz-placeholder,
 .form-field.not-empty select::-moz-placeholder {
   opacity: 1;
   color: #bebebe;
 }
 .form-field.focus input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.focus input:not(input[type=radio]):-ms-input-placeholder,
 .form-field.focus textarea:-ms-input-placeholder,
 .form-field.focus select:-ms-input-placeholder, .form-field:focus-within input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field:focus-within input:not(input[type=radio]):-ms-input-placeholder,
 .form-field:focus-within textarea:-ms-input-placeholder,
 .form-field:focus-within select:-ms-input-placeholder, .form-field.not-empty input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.not-empty input:not(input[type=radio]):-ms-input-placeholder,
 .form-field.not-empty textarea:-ms-input-placeholder,
 .form-field.not-empty select:-ms-input-placeholder {
   opacity: 1;
@@ -5118,6 +5190,15 @@ input[type=hidden] {
   opacity: 0.4;
   cursor: not-allowed;
 }
+.form-field input:not([type=checkbox]):not(input[type=radio]).readonly, .form-field input:not([type=checkbox]):not(input[type=radio]):readonly,
+.form-field textarea.readonly,
+.form-field textarea:readonly,
+.form-field select.readonly,
+.form-field select:readonly {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.4;
+  cursor: default;
+}
 .form-field select {
   appearance: none;
   -webkit-appearance: none;
@@ -5153,6 +5234,10 @@ input[type=hidden] {
 }
 .form-field textarea {
   resize: vertical;
+  height: auto;
+  min-height: 46px;
+  line-height: 1.95rem;
+  padding-top: 23px;
 }
 .form-field textarea + label {
   top: 26px;
@@ -5260,12 +5345,12 @@ input[type=hidden] {
 .form-field .btn-upload.btn-xs .upload-cover {
   line-height: 19px;
 }
-.form-field.danger input {
+.form-field.danger input:not([type=checkbox]):not(input[type=radio]), .form-field.danger textarea, .form-field.danger select {
   border-color: #ff0042;
   -webkit-box-shadow: inset 0 0 0 1px #ff0042;
           box-shadow: inset 0 0 0 1px #ff0042;
 }
-.form-field.warning input {
+.form-field.warning input:not([type=checkbox]):not(input[type=radio]), .form-field.warning textarea, .form-field.warning select {
   border-color: #ffd800;
   -webkit-box-shadow: inset 0 0 0 1px #ffd800;
           box-shadow: inset 0 0 0 1px #ffd800;
@@ -5331,133 +5416,45 @@ input[type=hidden] {
 .form-field.on-primary:focus-within select + label {
   color: #ffffff;
 }
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.on-primary.focus textarea::-webkit-input-placeholder,
-.form-field.on-primary.focus select::-webkit-input-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.on-primary:focus-within textarea::-webkit-input-placeholder,
-.form-field.on-primary:focus-within select::-webkit-input-placeholder {
-  color: #f4f4f4;
+.form-field.on-primary input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
+.form-field.on-primary textarea::-webkit-input-placeholder,
+.form-field.on-primary select::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.on-primary.focus textarea::-moz-placeholder,
-.form-field.on-primary.focus select::-moz-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.on-primary:focus-within textarea::-moz-placeholder,
-.form-field.on-primary:focus-within select::-moz-placeholder {
-  color: #f4f4f4;
+.form-field.on-primary input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
+.form-field.on-primary textarea::-moz-placeholder,
+.form-field.on-primary select::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.on-primary.focus textarea:-ms-input-placeholder,
-.form-field.on-primary.focus select:-ms-input-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.on-primary:focus-within textarea:-ms-input-placeholder,
-.form-field.on-primary:focus-within select:-ms-input-placeholder {
-  color: #f4f4f4;
+.form-field.on-primary input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
+.form-field.on-primary textarea:-ms-input-placeholder,
+.form-field.on-primary select:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio])::placeholder,
-.form-field.on-primary.focus textarea::placeholder,
-.form-field.on-primary.focus select::placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio])::placeholder,
-.form-field.on-primary:focus-within textarea::placeholder,
-.form-field.on-primary:focus-within select::placeholder {
-  color: #f4f4f4;
+.form-field.on-primary input:not([type=checkbox]):not(input[type=radio])::placeholder,
+.form-field.on-primary textarea::placeholder,
+.form-field.on-primary select::placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.on-primary.focus textarea::-webkit-input-placeholder,
-.form-field.on-primary.focus select::-webkit-input-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.on-primary:focus-within textarea::-webkit-input-placeholder,
-.form-field.on-primary:focus-within select::-webkit-input-placeholder {
-  color: #f4f4f4;
+.form-field.on-primary input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
+.form-field.on-primary textarea::-webkit-input-placeholder,
+.form-field.on-primary select::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio]):-moz-placeholder,
-.form-field.on-primary.focus textarea:-moz-placeholder,
-.form-field.on-primary.focus select:-moz-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio]):-moz-placeholder,
-.form-field.on-primary:focus-within textarea:-moz-placeholder,
-.form-field.on-primary:focus-within select:-moz-placeholder {
-  color: #f4f4f4;
+.form-field.on-primary input:not([type=checkbox]):not(input[type=radio]):-moz-placeholder,
+.form-field.on-primary textarea:-moz-placeholder,
+.form-field.on-primary select:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.on-primary.focus textarea::-moz-placeholder,
-.form-field.on-primary.focus select::-moz-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.on-primary:focus-within textarea::-moz-placeholder,
-.form-field.on-primary:focus-within select::-moz-placeholder {
-  color: #f4f4f4;
+.form-field.on-primary input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
+.form-field.on-primary textarea::-moz-placeholder,
+.form-field.on-primary select::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.on-primary.focus textarea:-ms-input-placeholder,
-.form-field.on-primary.focus select:-ms-input-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.on-primary:focus-within textarea:-ms-input-placeholder,
-.form-field.on-primary:focus-within select:-ms-input-placeholder {
-  color: #f4f4f4;
-}
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.on-primary.focus textarea::-webkit-input-placeholder,
-.form-field.on-primary.focus select::-webkit-input-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.on-primary:focus-within textarea::-webkit-input-placeholder,
-.form-field.on-primary:focus-within select::-webkit-input-placeholder, .form-field.on-primary.not-empty input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.on-primary.not-empty textarea::-webkit-input-placeholder,
-.form-field.on-primary.not-empty select::-webkit-input-placeholder {
-  color: #ffffff;
-}
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.on-primary.focus textarea::-moz-placeholder,
-.form-field.on-primary.focus select::-moz-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.on-primary:focus-within textarea::-moz-placeholder,
-.form-field.on-primary:focus-within select::-moz-placeholder, .form-field.on-primary.not-empty input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.on-primary.not-empty textarea::-moz-placeholder,
-.form-field.on-primary.not-empty select::-moz-placeholder {
-  color: #ffffff;
-}
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.on-primary.focus textarea:-ms-input-placeholder,
-.form-field.on-primary.focus select:-ms-input-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.on-primary:focus-within textarea:-ms-input-placeholder,
-.form-field.on-primary:focus-within select:-ms-input-placeholder, .form-field.on-primary.not-empty input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.on-primary.not-empty textarea:-ms-input-placeholder,
-.form-field.on-primary.not-empty select:-ms-input-placeholder {
-  color: #ffffff;
-}
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio])::placeholder,
-.form-field.on-primary.focus textarea::placeholder,
-.form-field.on-primary.focus select::placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio])::placeholder,
-.form-field.on-primary:focus-within textarea::placeholder,
-.form-field.on-primary:focus-within select::placeholder, .form-field.on-primary.not-empty input:not([type=checkbox]):not(input[type=radio])::placeholder,
-.form-field.on-primary.not-empty textarea::placeholder,
-.form-field.on-primary.not-empty select::placeholder {
-  color: #ffffff;
-}
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.on-primary.focus textarea::-webkit-input-placeholder,
-.form-field.on-primary.focus select::-webkit-input-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.on-primary:focus-within textarea::-webkit-input-placeholder,
-.form-field.on-primary:focus-within select::-webkit-input-placeholder, .form-field.on-primary.not-empty input:not([type=checkbox]):not(input[type=radio])::-webkit-input-placeholder,
-.form-field.on-primary.not-empty textarea::-webkit-input-placeholder,
-.form-field.on-primary.not-empty select::-webkit-input-placeholder {
-  color: #ffffff;
-}
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio]):-moz-placeholder,
-.form-field.on-primary.focus textarea:-moz-placeholder,
-.form-field.on-primary.focus select:-moz-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio]):-moz-placeholder,
-.form-field.on-primary:focus-within textarea:-moz-placeholder,
-.form-field.on-primary:focus-within select:-moz-placeholder, .form-field.on-primary.not-empty input:not([type=checkbox]):not(input[type=radio]):-moz-placeholder,
-.form-field.on-primary.not-empty textarea:-moz-placeholder,
-.form-field.on-primary.not-empty select:-moz-placeholder {
-  color: #ffffff;
-}
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.on-primary.focus textarea::-moz-placeholder,
-.form-field.on-primary.focus select::-moz-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.on-primary:focus-within textarea::-moz-placeholder,
-.form-field.on-primary:focus-within select::-moz-placeholder, .form-field.on-primary.not-empty input:not([type=checkbox]):not(input[type=radio])::-moz-placeholder,
-.form-field.on-primary.not-empty textarea::-moz-placeholder,
-.form-field.on-primary.not-empty select::-moz-placeholder {
-  color: #ffffff;
-}
-.form-field.on-primary.focus input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.on-primary.focus textarea:-ms-input-placeholder,
-.form-field.on-primary.focus select:-ms-input-placeholder, .form-field.on-primary:focus-within input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.on-primary:focus-within textarea:-ms-input-placeholder,
-.form-field.on-primary:focus-within select:-ms-input-placeholder, .form-field.on-primary.not-empty input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
-.form-field.on-primary.not-empty textarea:-ms-input-placeholder,
-.form-field.on-primary.not-empty select:-ms-input-placeholder {
-  color: #ffffff;
+.form-field.on-primary input:not([type=checkbox]):not(input[type=radio]):-ms-input-placeholder,
+.form-field.on-primary textarea:-ms-input-placeholder,
+.form-field.on-primary select:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
 .form-field.on-primary input:not([type=checkbox]):not(input[type=radio]),
 .form-field.on-primary textarea,
@@ -5481,6 +5478,15 @@ input[type=hidden] {
 .form-field.on-primary select:disabled {
   background-color: rgba(0, 0, 0, 0.1);
 }
+.form-field.on-primary input:not([type=checkbox]):not(input[type=radio]).readonly, .form-field.on-primary input:not([type=checkbox]):not(input[type=radio]):readonly,
+.form-field.on-primary textarea.readonly,
+.form-field.on-primary textarea:readonly,
+.form-field.on-primary select.readonly,
+.form-field.on-primary select:readonly {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.4;
+  cursor: default;
+}
 .form-field.on-primary:has(> select):after {
   border-top: 6px solid rgba(255, 255, 255, 0.6);
 }
@@ -5497,6 +5503,16 @@ input[type=hidden] {
 .form-field.on-primary input[type=date]:focus:before,
 .form-field.on-primary input[type=datetime-local]:focus:before {
   color: #ffffff;
+}
+.form-field.danger input:not([type=checkbox]):not(input[type=radio]), .form-field.danger textarea, .form-field.danger select {
+  border-color: #ff0042;
+  -webkit-box-shadow: inset 0 0 0 1px #ff0042;
+          box-shadow: inset 0 0 0 1px #ff0042;
+}
+.form-field.warning input:not([type=checkbox]):not(input[type=radio]), .form-field.warning textarea, .form-field.warning select {
+  border-color: #ffd800;
+  -webkit-box-shadow: inset 0 0 0 1px #ffd800;
+          box-shadow: inset 0 0 0 1px #ffd800;
 }
 
 .form-field > .glyph-icon {

@@ -50,7 +50,7 @@ class Categories extends BaseModel
     /**
      * {@inheritdoc}
      */
-    public function onAJAX(): array|false
+    public function onAJAX(): array|false|string
     {
         return false;
     }
@@ -301,6 +301,7 @@ class Categories extends BaseModel
         $offset       = $page * $perPage;
         $limit        = $perPage;
         $search       = $queries['search'];
+        $madeWhere    = false;
 
         // Select the posts
         $this->sql()->SELECT('categories.id')->FROM('categories');
@@ -308,7 +309,7 @@ class Categories extends BaseModel
         // Search the name
         if ($search)
         {
-            $this->sql()->AND_WHERE('name', 'like', '%' . $queries['search'] . '%');
+            $this->sql()->WHERE('name', 'LIKE', '%' . $queries['search'] . '%');
         }
 
         // Find the articles
@@ -323,8 +324,18 @@ class Categories extends BaseModel
             {
                 $this->sql()->SELECT('posts.id')->FROM('posts')
                 ->LEFT_JOIN_ON('categories_to_posts', 'posts.id = categories_to_posts.post_id')
-                ->LEFT_JOIN_ON('categories', 'categories.id = categories_to_posts.category_id')
-                ->WHERE('categories.id', '=', $row['id']);
+                ->LEFT_JOIN_ON('categories', 'categories.id = categories_to_posts.category_id');
+                
+                if (!$madeWhere)
+                {
+                    $this->sql()->WHERE('categories.id', '=', $row['id']);
+
+                    $madeWhere = true;
+                }
+                else
+                {
+                    $this->sql()->AND_WHERE('categories.id', '=', $row['id']);
+                }
 
                 $category = $this->CategoryManager->byId($row['id']);
 

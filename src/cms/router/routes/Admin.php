@@ -14,7 +14,6 @@ use cms\admin\controllers\account\ForgotPassword as ForgotPasswordController;
 use cms\admin\controllers\account\ForgotUsername as ForgotUsernameController;
 use cms\admin\controllers\account\ResetPassword as ResetPasswordController;
 use cms\admin\controllers\dash\Posts as PostsController;
-use cms\admin\controllers\dash\Pages as PagesController;
 use cms\admin\controllers\dash\Tags as TagsController;
 use cms\admin\controllers\dash\Categories as CategoriesController;
 use cms\admin\controllers\dash\Comments as CommentsController;
@@ -129,51 +128,51 @@ class Admin extends RoutesBase
             'method'     => 'get',
             'route'      => '/admin/posts/',
             'controller' => PostsController::class . '@dispatch',
-            'model'      => PostsModel::class,
+            'model'      => [PostsModel::class, 'post'],
         ],
         [
             'method'     => 'get',
             'route'      => '/admin/posts/(:all)',
             'controller' => PostsController::class . '@dispatch',
-            'model'      => PostsModel::class,
+            'model'      => [PostsModel::class, 'post'],
         ],
         [
             'method'     => 'post',
             'route'      => '/admin/posts/',
             'controller' => PostsController::class . '@dispatch',
-            'model'      => PostsModel::class,
+            'model'      => [PostsModel::class, 'post'],
         ],
         [
             'method'      => 'post',
             'route'       => '/admin/posts/(:all)',
             'controller'  => PostsController::class . '@dispatch',
-            'model'       => PostsModel::class,
+            'model'       => [PostsModel::class, 'post'],
         ],
 
         // Admin pages
         [
             'method'     => 'get',
             'route'      => '/admin/pages/',
-            'controller' => PagesController::class . '@dispatch',
-            'model'      => PostsModel::class,
+            'controller' => PostsController::class . '@dispatch',
+            'model'      => [PostsModel::class, 'page'],
         ],
         [
             'method'     => 'get',
             'route'      => '/admin/pages/(:all)',
-            'controller' => PagesController::class . '@dispatch',
-            'model'      => PostsModel::class,
+            'controller' => PostsController::class . '@dispatch',
+            'model'      => [PostsModel::class, 'page'],
         ],
         [
             'method'     => 'post',
             'route'      => '/admin/pages/',
-            'controller' => PagesController::class . '@dispatch',
-            'model'      => PostsModel::class,
+            'controller' => PostsController::class . '@dispatch',
+            'model'      => [PostsModel::class, 'page'],
         ],
         [
             'method'      => 'post',
             'route'       => '/admin/pages/(:all)',
-            'controller'  => PagesController::class . '@dispatch',
-            'model'       => PostsModel::class,
+            'controller'  => PostsController::class . '@dispatch',
+            'model'       => [PostsModel::class, 'page'],
         ],
 
         // Admin tags

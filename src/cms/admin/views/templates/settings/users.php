@@ -16,7 +16,7 @@ $all_authors = all_the_authors();
 
 		<div class="row">
 			<div class="col col-12 col-md-6 gutter-md-xs gutter-md-r">
-				<div class="form-field row floor-sm">
+				<div class="form-field on-primary row margin-xs-s">
 		            <label for="invite_email">Email</label>
 		            <input type="email" name="email" id="invite_email" placeholder="jappleseed@example.com" data-js-required="true" data-js-validation="email">
 		            <p class="help-danger">* Please enter a valid email address.</p>
@@ -24,7 +24,7 @@ $all_authors = all_the_authors();
 		    </div>
 
 		    <div class="col col-12 col-md-6 gutter-md-xs gutter-md-l">
-		        <div class="form-field row floor-sm">
+		        <div class="form-field on-primary row margin-xs-s">
 		            <label for="invite_role">Role</label>
 		            <select name="role" id="invite_role" data-js-required="true">
 		            	<option value="" selected>Select role</option>
@@ -38,7 +38,7 @@ $all_authors = all_the_authors();
 		
 		<input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>">
 		<input type="hidden" name="form_name" value="invite_user">
-	    <button type="submit" class="btn btn-success raised">Invite</button>
+	    <button type="submit" class="btn btn-primary raised">Invite</button>
 
 	</form>
 

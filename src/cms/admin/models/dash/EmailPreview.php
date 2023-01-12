@@ -38,7 +38,7 @@ class EmailPreview extends BaseModel
     /**
      * {@inheritdoc}
      */
-    public function onAJAX(): array|false
+    public function onAJAX(): array|false|string
     {
         // Process any AJAX requests here
         //

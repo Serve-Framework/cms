@@ -16,7 +16,7 @@ use serve\utility\Str;
 		</div>
 		<div class="media-body gutter-md">
 			<div>
-	            <a class="h5" href="<?php echo the_permalink($article->id); ?><?php echo $article->status === 'published' ? '' : '?draft'; ?>" target="_blank">
+	            <a class="h5 color-white" href="<?php echo the_permalink($article->id); ?><?php echo $article->status === 'published' ? '' : '?draft'; ?>" target="_blank">
 	            	<?php echo $article->title; ?>
 	            </a>
 	        </div>
@@ -46,45 +46,45 @@ use serve\utility\Str;
 		        <?php endforeach; ?>
 		    </div>
 		    <div class="color-gray-light p6 roof-xs">
-	       		<?php echo Str::reduce($article->excerpt, 100, '...'); ?>
+	       		<?php echo Str::reduce(htmlentities($article->excerpt), 100, '...'); ?>
 	       	</div>
 	       	<div class="post-edit-wrap collapsed" id="post-edit-<?php echo $article->id; ?>">
 	       		<div class="roof-xs col-8">
 	       			<form method="post" class="js-validation-form">
-				        <div class="form-field row floor-xs">
-				            <label for="post_title_<?php echo $article->title; ?>">Title</label>
+				        <div class="form-field on-primary row margin-xs-s">
 				            <input type="text" name="title" id="post_title_<?php echo $article->id; ?>" placeholder="Title" value="<?php echo $article->title; ?>" data-js-required="true">
+				            <label for="post_title_<?php echo $article->title; ?>">Title</label>
 				        </div>
 
-				        <div class="form-field row floor-xs">
-				            <label for="post_slug_<?php echo $article->id; ?>">Slug</label>
+				        <div class="form-field on-primary row margin-xs-s">
 				            <input type="text" name="slug" id="post_slug_<?php echo $article->id; ?>" placeholder="post-slug" value="<?php echo Str::getAfterLastChar(rtrim($article->slug, '/'), '/'); ?>" data-js-required="true" class="js-mask-alpha-dash">
+				            <label for="post_slug_<?php echo $article->id; ?>">Slug</label>
 				        </div>
 
-				        <div class="form-field row floor-xs">
-				            <label for="post_excerpt_<?php echo $article->id; ?>">Excerpt</label>
+				        <div class="form-field on-primary row margin-xs-s">
 				            <textarea name="excerpt" id="post_excerpt_<?php echo $article->id; ?>" style="resize: vertical;" rows="5"><?php echo $article->excerpt; ?></textarea>
+				             <label for="post_excerpt_<?php echo $article->id; ?>">Excerpt</label>
 				        </div>
 				        
 				        <input type="hidden" name="posts[]"      value="<?php echo $article->id; ?>">
 				        <input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>">
 				        <input type="hidden" name="bulk_action"  value="update">
 
-				        <button type="button" class="btn js-collapse" data-collapse-target="post-edit-<?php echo $article->id; ?>">Cancel</button>
-				        <button type="submit" class="btn btn-success">Update <?php echo ucfirst($postType); ?></button>
+				        <button type="button" class="btn btn-pure js-collapse" data-collapse-target="post-edit-<?php echo $article->id; ?>">Cancel</button>
+				        <button type="submit" class="btn btn-pure btn-primary">Update <?php echo ucfirst($postType); ?></button>
 				    </form>
 	       		</div>
 	       	</div>
 		</div>
 		<div class="media-right nowrap">
-			<button class="btn btn-pure btn-xs btn-circle tooltipped tooltipped-n" data-tooltip="Duplicate <?php echo strtolower($postType); ?>" onclick="document.getElementById('duplicate-post-form-<?php echo $article->id; ?>').submit()">
-				<span class="glyph-icon glyph-icon-copy icon-md"></span>
+			<button class="btn btn-pure btn-circle tooltipped tooltipped-n" data-tooltip="Duplicate <?php echo strtolower($postType); ?>" onclick="document.getElementById('duplicate-post-form-<?php echo $article->id; ?>').submit()">
+				<span class="glyph-icon glyph-icon-copy icon-xs"></span>
 			</button>
-			<a href="#" class="btn btn-pure btn-xs btn-circle tooltipped tooltipped-n js-collapse" data-collapse-target="post-edit-<?php echo $article->id; ?>" data-tooltip="Quick edit <?php echo strtolower($postType); ?>">
-				<span class="glyph-icon glyph-icon-pencil icon-md"></span>
+			<a href="#" class="btn btn-pure btn-circle tooltipped tooltipped-n js-collapse" data-collapse-target="post-edit-<?php echo $article->id; ?>" data-tooltip="Quick edit <?php echo strtolower($postType); ?>">
+				<span class="glyph-icon glyph-icon-pencil icon-xs"></span>
 			</a>
-			<a href="/admin/writer/?id=<?php echo $article->id; ?>" class="btn btn-pure btn-xs btn-circle tooltipped tooltipped-n" data-tooltip="Open <?php echo strtolower($postType); ?> in writer" style="margin-top: 6px;">
-				<span class="glyph-icon glyph-icon-align-left icon-md"></span>
+			<a href="/admin/writer/?id=<?php echo $article->id; ?>" class="btn btn-pure btn-circle tooltipped tooltipped-n" data-tooltip="Open <?php echo strtolower($postType); ?> in writer" style="margin-top: 6px;">
+				<span class="glyph-icon glyph-icon-align-left icon-xs"></span>
 			</a>
 			<div class="form-field inline-block">
 				<span class="tooltipped tooltipped-n" data-tooltip="<?php echo ($article->status === 'published') ? 'Draft' : 'Publish'; ?>">
@@ -92,8 +92,8 @@ use serve\utility\Str;
 					<label for="status-switch-<?php echo $article->id; ?>"></label>
 				</span>
 	        </div>
-	        <a href="#" class="btn btn-pure btn-xs btn-circle btn-danger tooltipped tooltipped-n js-confirm-delete" data-item="post" data-form="delete-form-<?php echo $article->id; ?>" data-tooltip="Delete <?php echo $postType; ?>" style="margin-top: 6px;">
-				<span class="glyph-icon glyph-icon-trash-o icon-md"></span>
+	        <a href="#" class="btn btn-pure btn-circle btn-danger tooltipped tooltipped-n js-confirm-delete" data-item="post" data-form="delete-form-<?php echo $article->id; ?>" data-tooltip="Delete <?php echo $postType; ?>" style="margin-top: 6px;">
+				<span class="glyph-icon glyph-icon-trash-o icon-xs"></span>
 			</a>
 			<form method="post" id="duplicate-post-form-<?php echo $article->id; ?>" style="display: none">
 				<input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>">

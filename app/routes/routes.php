@@ -27,4 +27,4 @@
  *
  * Uncomment below to see how to add a custom post-type to the Admin Panel.
  */
-$serve->Admin->registerPostType('Product', 'product', 'shopping-cart', 'products/(:postname)/');
+$serve->Admin->registerPostType('Product', 'product', 'basket', 'products/(:postname)/');

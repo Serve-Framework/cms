@@ -12,7 +12,7 @@
             Serve access and security settings add an extra layer of security and access integration to your site.
         </p>
         
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="block_robots">Robots</label>
             <p class="color-gray">
                 Blocking all robots from the site, will disallow all bots (e.g Google indexing) from accessing your site.
@@ -25,7 +25,7 @@
 
         <div class="<?php echo $enable_robots ? 'hide-overflow' : 'hide-overflow collapsed'; ?> " id="robots-details" >
             <div class="gutter-lg gutter-l">
-                <div class="form-field row floor-sm">
+                <div class="form-field on-primary row margin-xs-s">
                     <label for="robots_content">Robots.txt content</label>
                     <p class="color-gray">
                         Enter a custom value for your "robots.txt" file. To allow all bots access, leave this blank.
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="enable_ip_block">IP blocking</label>
             <p class="color-gray">
                 You can block access from all visitors to your site except a subset of IP addresses. 
@@ -60,7 +60,7 @@
 
         <div class="<?php echo $enable_ip_block ? 'hide-overflow' : 'hide-overflow collapsed'; ?> " id="whitelist-details" >
             <div class="gutter-lg gutter-l">
-                <div class="form-field row floor-sm">
+                <div class="form-field on-primary row margin-xs-s">
                     <label for="ip_whitelist">IP whitelist</label>
                     <p class="color-gray">
                         Enter a comma seperated list of IP addresses to whitelist for access.
@@ -73,6 +73,6 @@
         
         <input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>">
         <input type="hidden" name="form_name" value="access_settings">
-        <button type="submit" class="btn btn-success">Update Settings</button>
+        <button type="submit" class="btn btn-pure btn-primary">Update Settings</button>
     </form>
 </div>

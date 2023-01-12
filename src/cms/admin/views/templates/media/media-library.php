@@ -6,18 +6,18 @@
 
 		<!-- DEFAULT POWERS -->
 		<span class="default-powers">
-			<button type="button" class="btn btn-default js-bulk-select-trigger">Bulk Select</button>
-			<button type="button" class="btn btn-success js-collapse" data-collapse-target="dz-wrap">Add New</button>
+			<button type="button" class="btn btn-pure js-bulk-select-trigger">Bulk Select</button>
+			<button type="button" class="btn btn-pure btn-primary js-collapse" data-collapse-target="dz-wrap">Add New</button>
 		</span>
 
 		<!-- SELECTION POWERS -->
 		<span class="selection-powers">
-			<button type="button" class="btn btn-default js-cancel-bulk-select-trigger">Cancel Selection</button>
-			<button type="button" class="btn btn-danger js-bulk-delete-trigger">Delete Selected</button>
+			<button type="button" class="btn btn-pure js-cancel-bulk-select-trigger">Cancel Selection</button>
+			<button type="button" class="btn btn-pure btn-danger js-bulk-delete-trigger">Delete Selected</button>
 		</span>
 
-		<button class="btn btn-pure float-right close-media-lib js-close-media-lib">
-			<span class="glyph-icon glyph-icon-close icon-md"></span>
+		<button class="btn btn-pure btn-circle float-right close-media-lib js-close-media-lib">
+			<span class="glyph-icon glyph-icon-cross2 icon-md"></span>
 		</button>
 
 	</div>
@@ -28,7 +28,7 @@
 			<div class="pad-40 text-center dz-message">
 				<div class="prompt">
 					<div class="floor-sm">
-						<span class="glyph-icon glyph-icon-camera-retro color-primary icon-xl"></span>
+						<span class="glyph-icon glyph-icon-camera3 color-primary icon-xl"></span>
 					</div>
 					<h3>Drop Files Here to Upload</h3>
 					<p>Click or drop files to begin uploading.</p>
@@ -44,7 +44,7 @@
 		<div class="card empty-msg">
 			<div class="pad-40 text-center">
 				<div class="roof-sm floor-sm">
-					<span class="glyph-icon glyph-icon-camera-retro color-primary icon-xl"></span>
+					<span class="glyph-icon glyph-icon-camera3 color-primary icon-xl"></span>
 				</div>
 				<h3>No Media to Display!</h3>
 				<p>There's currently no media items to display. Drag and drop an image to get started.</p>
@@ -63,15 +63,15 @@
 				<div class="attachment-powers">
 
 					<span class="h3 powers-title">Attachment Details</span>
-					<div class="btn-group inline-block float-right">
-						<button class="btn btn-pure  js-image-left-trigger tooltipped tooltipped-s" data-tooltip="Previous attachment">
-							<span class="glyph-icon glyph-icon-chevron-left"></span>
+					<div class="inline-block float-right">
+						<button class="btn btn-pure btn-circle js-image-left-trigger tooltipped tooltipped-s" data-tooltip="Previous attachment">
+							<span class="glyph-icon glyph-icon-arrow-left4 icon-xs"></span>
 						</button>
-						<button class="btn btn-pure  js-image-right-trigger tooltipped tooltipped-s" data-tooltip="Next attachment">
-							<span class="glyph-icon glyph-icon-chevron-right"></span>
+						<button class="btn btn-pure btn-circle js-image-right-trigger tooltipped tooltipped-s" data-tooltip="Next attachment">
+							<span class="glyph-icon glyph-icon-arrow-right4 icon-xs"></span>
 						</button>
-						<button class="btn btn-pure  js-close-preview tooltipped tooltipped-se" data-tooltip="Close preview">
-							<span class="glyph-icon glyph-icon-close"></span>
+						<button class="btn btn-pure btn-circle js-close-preview tooltipped tooltipped-se" data-tooltip="Close preview">
+							<span class="glyph-icon glyph-icon-cross2 icon-xs"></span>
 						</button>
 					</div>
 				</div>
@@ -103,30 +103,30 @@
 
 						<!-- INFO FORM - INSERT OR UPDATE -->
 						<form class="media-details-form js-media-details-form roof-xs floor-xs">
-							<div class="form-field row floor-xs">
+							<div class="form-field on-primary row margin-xs-s">
+								<input type="text" id="media_url" value="" readonly class="readonly">
 								<label>URL</label>
-								<input type="text"  id="media_url" value="" readonly>
 							</div>
-							<div class="form-field row floor-xs">
-								<label for="media_title">Title</label>
+							<div class="form-field on-primary row margin-xs-s">
 								<input type="text" name="media_title" id="media_title" value="">
+								<label for="media_title">Title</label>
 							</div>
-							<div class="form-field row floor-xs" class="is-image">
-								<label for="media_alt">Alt Text</label>
+							<div class="form-field on-primary row margin-xs-s" class="is-image">
 								<input type="text" name="media_alt" id="media_alt" value="">
+								<label for="media_alt">Alt Text</label>
 							</div>
 							
-							<div class="form-field row floor-xs size-select">
-								<label for="media_size">Attachment Size</label>
+							<div class="form-field on-primary row margin-xs-s size-select">
 								<select id="media_size" class="js-size-select">
 									<option value="origional">Original</option>
 									<?php foreach ($serve->Config->get('cms.uploads.thumbnail_sizes') as $suffix => $size) : ?>
 									<option value="<?php echo $suffix; ?>"><?php echo ucfirst($suffix); ?> </option>
 									<?php endforeach; ?>
 								</select>
+								<label for="media_size">Attachment Size</label>
 							</div>
 
-							<div class="form-field row floor-xs link-to">
+							<div class="form-field on-primary row margin-xs-s link-to">
 								<label for="media_link_to_select">Link To</label>
 								<select name="media_link_to_select" id="media_link_to_select">
 									<option value="none" selected>None</option>
@@ -143,30 +143,30 @@
 
 							<input type="hidden" name="media_id" id="media_id" value="">
 
-							<button type="button" class="btn btn-danger with-spinner delete-media js-delete-media">
+							<button type="button" class="btn btn-danger btn-pure with-spinner delete-media js-delete-media">
 								<svg viewBox="0 0 64 64" class="loading-spinner"><circle class="path" cx="32" cy="32" r="30" fill="none" stroke-width="4"></circle></svg>
-								Delete attachment
+								Delete
 							</button>
 
-							<button type="button" class="btn with-spinner update-media js-update-media">
+							<button type="button" class="btn btn-pure with-spinner update-media js-update-media">
 								<svg viewBox="0 0 64 64" class="loading-spinner"><circle class="path" cx="32" cy="32" r="30" fill="none" stroke-width="4"></circle></svg>
-								Update attachment info
+								Update
 							</button>
 							
-							<button type="button" class="btn btn-success with-spinner insert-media js-insert-media">
+							<button type="button" class="btn btn-pure btn-primary with-spinner insert-media js-insert-media">
 								<svg viewBox="0 0 64 64" class="loading-spinner"><circle class="path" cx="32" cy="32" r="30" fill="none" stroke-width="4"></circle></svg>
-								Insert into post
+								Insert
 							</button>
 
-							<button type="button" class="btn btn-success with-spinner set-feature-image js-set-feature-image">
+							<button type="button" class="btn btn-pure btn-primary with-spinner set-feature-image js-set-feature-image">
 								Set As Feature Image
 							</button>
 
-							<button type="button" class="btn btn-success with-spinner set-author-avatar js-set-author-avatar">
+							<button type="button" class="btn btn-pure btn-primary with-spinner set-author-avatar js-set-author-avatar">
 								Set As Avatar
 							</button>
 
-							<button type="button" class="btn btn-success with-spinner set-image-trigger js-set-image-trigger">
+							<button type="button" class="btn btn-pure btn-primary with-spinner set-image-trigger js-set-image-trigger">
 								Select Image
 							</button>
 							

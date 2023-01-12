@@ -25,7 +25,17 @@ class Posts extends BaseModel
      *
      * @var string
      */
-    protected $postType = 'post';
+    protected $postType;
+
+    /**
+     * Set the post type
+     * 
+     * @param string  $postType  Post type
+     */
+    public function setPostType(string $postType)
+    {
+        $this->postType = $postType;
+    }
 
     /**
      * {@inheritdoc}
@@ -56,7 +66,7 @@ class Posts extends BaseModel
     /**
      * {@inheritdoc}
      */
-    public function onAJAX(): array|false
+    public function onAJAX(): array|false|string
     {
         return false;
     }
@@ -407,7 +417,7 @@ class Posts extends BaseModel
         // Search the title
         if ($search)
         {
-            $this->sql()->AND_WHERE('posts.title', 'like', '%' . $queries['search'] . '%');
+            $this->sql()->AND_WHERE('posts.title', 'LIKE', '%' . $queries['search'] . '%');
         }
 
         // Filter by author

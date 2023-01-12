@@ -7,11 +7,12 @@
 
 namespace cms\admin;
 
-use cms\admin\controllers\Dashboard as DashController;
-use cms\router\controllers\Content as ContentController;
-use cms\router\models\CustomPost as CustomPostModel;
-use cms\router\models\CustomPosts as CustomPostsModel;
-use cms\admin\models\Posts as PostsModel;
+use cms\admin\controllers\dash\Posts as AdminController;
+use cms\admin\models\dash\Posts as AdminModel;
+use cms\router\controllers\Content as CmsController;
+use cms\router\models\CustomPosts as CmsPostsModel;
+use cms\router\models\CustomPost as CmsSingleModel;
+
 use serve\ioc\ContainerAwareTrait;
 use serve\utility\Arr;
 use serve\utility\Humanizer;
@@ -48,28 +49,27 @@ class Admin
         $isPage      = $slug === $requestSlug;
 
         // Add the admin panel route
-        $this->Router->get("/admin/{$slug}/",        DashController::class . '@customPostType', PostsModel::class);
-        $this->Router->get("/admin/{$slug}/(:all)",  DashController::class . '@customPostType', PostsModel::class);
-        $this->Router->post("/admin/{$slug}/",       DashController::class . '@customPostType', PostsModel::class);
-        $this->Router->post("/admin/{$slug}/(:all)", DashController::class . '@customPostType', PostsModel::class);
+        $this->Router->get("/admin/{$slug}/",        AdminController::class . '@dispatch', [ AdminModel::class, $type ] );
+        $this->Router->get("/admin/{$slug}/(:all)",  AdminController::class . '@dispatch', [ AdminModel::class, $type ] );
+        $this->Router->post("/admin/{$slug}/",       AdminController::class . '@dispatch', [ AdminModel::class, $type ] );
+        $this->Router->post("/admin/{$slug}/(:all)", AdminController::class . '@dispatch', [ AdminModel::class, $type ] );
 
         // Add the front-end routes to all posts
         $types = Humanizer::pluralize(strtolower($type));
 
-        $this->Router->get('/' . $types . '/feed/rss/',  ContentController::class . '@rss',   [CustomPostsModel::class, "home-{$slug}"]);
-        $this->Router->get('/' . $types . '/feed/atom/', ContentController::class . '@rss',   [CustomPostsModel::class, "home-{$slug}"]);
-        $this->Router->get('/' . $types . '/feed/rdf/',  ContentController::class . '@rss',   [CustomPostsModel::class, "home-{$slug}"]);
-        $this->Router->get('/' . $types . '/feed/',      ContentController::class . '@rss',   [CustomPostsModel::class, "home-{$slug}"]);
-        $this->Router->get('/' . $types,                 ContentController::class . '@apply', [CustomPostsModel::class, "home-{$slug}"]);
+        $this->Router->get('/' . $types . '/feed/rss/',  CmsController::class . '@rss',   [CmsPostsModel::class, "home-{$slug}"]);
+        $this->Router->get('/' . $types . '/feed/atom/', CmsController::class . '@rss',   [CmsPostsModel::class, "home-{$slug}"]);
+        $this->Router->get('/' . $types . '/feed/rdf/',  CmsController::class . '@rss',   [CmsPostsModel::class, "home-{$slug}"]);
+        $this->Router->get('/' . $types . '/feed/',      CmsController::class . '@rss',   [CmsPostsModel::class, "home-{$slug}"]);
+        $this->Router->get('/' . $types,                 CmsController::class . '@apply', [CmsPostsModel::class, "home-{$slug}"]);
 
         // Add the front-end routes to custom post
-        $this->Router->get('/' . $route . '/feed/rss/',  ContentController::class . '@rss',   [CustomPostModel::class, "single-{$slug}"]);
-        $this->Router->get('/' . $route . '/feed/atom/', ContentController::class . '@rss',   [CustomPostModel::class, "single-{$slug}"]);
-        $this->Router->get('/' . $route . '/feed/rdf/',  ContentController::class . '@rss',   [CustomPostModel::class, "single-{$slug}"]);
-        $this->Router->get('/' . $route . '/feed/',      ContentController::class . '@rss',   [CustomPostModel::class, "single-{$slug}"]);
-        $this->Router->get('/' . $route,                 ContentController::class . '@apply', [CustomPostModel::class, "single-{$slug}"]);
+        $this->Router->get('/' . $route . '/feed/rss/',  CmsController::class . '@rss',   [CmsSingleModel::class, "single-{$slug}"]);
+        $this->Router->get('/' . $route . '/feed/atom/', CmsController::class . '@rss',   [CmsSingleModel::class, "single-{$slug}"]);
+        $this->Router->get('/' . $route . '/feed/rdf/',  CmsController::class . '@rss',   [CmsSingleModel::class, "single-{$slug}"]);
+        $this->Router->get('/' . $route . '/feed/',      CmsController::class . '@rss',   [CmsSingleModel::class, "single-{$slug}"]);
+        $this->Router->get('/' . $route,                 CmsController::class . '@apply', [CmsSingleModel::class, "single-{$slug}"]);
 
-       
         // Add the custom post type to the config
         // So that when the post is saved, the CMS knows what permalink structure to use
         $custom_types = $this->Config->get('cms.custom_posts');
@@ -159,10 +159,10 @@ class Admin
         }
 
         // Add the route only if the current user is logged as admin
-        $this->Router->get("/admin/{$slug}/",        DashController::class . '@blankPage', $model);
-        $this->Router->get("/admin/{$slug}/(:all)",  DashController::class . '@blankPage', $model);
-        $this->Router->post("/admin/{$slug}/",       DashController::class . '@blankPage', $model);
-        $this->Router->post("/admin/{$slug}/(:all)", DashController::class . '@blankPage', $model);
+        $this->Router->get("/admin/{$slug}/",        AdminController::class . '@dispatch', $model);
+        $this->Router->get("/admin/{$slug}/(:all)",  AdminController::class . '@dispatch', $model);
+        $this->Router->post("/admin/{$slug}/",       AdminController::class . '@dispatch', $model);
+        $this->Router->post("/admin/{$slug}/(:all)", AdminController::class . '@dispatch', $model);
 
         // If this is a child menu item is this page being requested ?
         if ($parent)

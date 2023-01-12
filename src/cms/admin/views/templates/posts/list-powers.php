@@ -17,7 +17,7 @@
 				<option value="delete">Delete</option>
 			</select>
 			<label for="bulk_action">Bulk actions</label>
-			<button type="submit" class="btn btn-primary">Apply</button>
+			<button type="submit" class="btn">Apply</button>
 	    </div>
 	</form>
 	
@@ -25,11 +25,11 @@
 	<span>&nbsp;&nbsp;</span>
 	
     <!-- STATUS AND SORTS -->
-    <div class="inline-block v-middlek">
+    <div class="inline-block v-middlek btn-group">
 
     	<!-- SORT -->
 	    <div class="drop-container">
-		    <button type="button" class="btn btn-xs btn-primary btn-pure btn-dropdown js-drop-trigger">
+		    <button type="button" class="btn btn-xs btn-pure btn-dropdown js-drop-trigger">
 		        Sort
 		        &nbsp;<span class="caret-s"></span>
 		    </button>
@@ -51,7 +51,7 @@
 
 		<!-- STATUS -->
 		<div class="drop-container">
-		    <button type="button" class="btn btn-xs btn-primary btn-pure btn-dropdown js-drop-trigger">
+		    <button type="button" class="btn btn-xs btn-pure btn-dropdown js-drop-trigger">
 		        Status
 		        &nbsp;<span class="caret-s"></span>
 		    </button>
@@ -69,7 +69,7 @@
 
 		<!-- AUTHOR -->
 		<div class="drop-container">
-		    <button type="button" class="btn btn-xs btn-primary btn-pure btn-dropdown js-drop-trigger">
+		    <button type="button" class="btn btn-xs btn-pure btn-dropdown js-drop-trigger">
 		        Author
 		        &nbsp;<span class="caret-s"></span>
 		    </button>
@@ -92,7 +92,7 @@
 
 		<!-- CATEGORY -->
 		<div class="drop-container">
-		    <button type="button" class="btn btn-xs btn-primary btn-pure btn-dropdown js-drop-trigger">
+		    <button type="button" class="btn btn-xs btn-pure btn-dropdown js-drop-trigger">
 		        Category
 		        &nbsp;<span class="caret-s"></span>
 		    </button>
@@ -129,7 +129,7 @@
 	    <div class="form-field field-group on-primary">
 	        <input type="text" name="search" id="search" value="<?php echo $queries['search']; ?>">
 	       	<label for="search">Search</label>
-	        <button type="submit" class="btn btn-primary">
+	        <button type="submit" class="btn">
 	        	&nbsp;&nbsp;<span class="glyph-icon glyph-icon-search icon-sm"></span>&nbsp;&nbsp;
 	        </button>
 	    </div>

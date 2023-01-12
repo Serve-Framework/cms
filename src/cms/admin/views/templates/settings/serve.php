@@ -12,7 +12,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             you change anything here. Please check out the <a href="https://serve-framework.github.io/#/8.0.0/01_getting_started/02_configuration" target="_blank">documentation</a> if you are unsure.
         </p>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="site_title">Site title</label>
             <p class="color-gray">
                 The name of your website. This is used by Serve to structure page titles for SEO.
@@ -21,7 +21,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             <p class="help-danger">* Please enter a website title.</p>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="site_description">Site description</label>
             <p class="color-gray">
                 The description of your website is used by Serve for SEO.
@@ -30,7 +30,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             <p class="help-danger">* Please enter a website description.</p>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label>Theme</label>
             <p class="color-gray">
                 This is where Serve will look for your theme files. To add a new theme, drop 
@@ -45,7 +45,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             <?php endforeach; ?>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="blog_location">Blog location</label>
             <p class="color-gray">
                 You can prefix your blog routes with a path (e.g. "blog"). This will add a fixed value prefix to all your post, category, tag and author 
@@ -54,7 +54,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             <input type="text" name="blog_location" id="blog_location" value="<?php echo $serveConfig['blog_location']; ?>" autocomplete="off"/>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="permalinks">Permalinks</label>
             <p class="color-gray">
                 Permalinks are used to structure URLs. The postname is mandatory. 
@@ -64,7 +64,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             <p class="help-danger">* Please enter a valid permalinks structure.</p>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="posts_per_page">Posts per page</label>
             <p class="color-gray">
                 How many posts to display per page. Default is 10.
@@ -73,7 +73,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             <p class="help-danger">* Please enter the posts per page.</p>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="thumbnail_quality">Thumbnail quality</label>
             <p class="color-gray">
                 What image quality should Serve use for uploading. 0 best. 9 is bad.
@@ -82,7 +82,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             <p class="help-danger">* Please enter a thumbnail quality.</p>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="sitemap_url">Sitemap</label>
             <p class="color-gray">
                 Where should Serve route your XML sitemap for search engines. Default is "sitemap.xml".
@@ -91,7 +91,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             <p class="help-danger">* Please enter a valid sitemap URL path.</p>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="sitemap_url">Tags</label>
             <p class="color-gray">
                 Do you want tags to have publicly accessible article listings.
@@ -102,7 +102,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             </span>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="enable_cats">Categories</label>
             <p class="color-gray">
                 Do you want categories to have publicly accessible article listings.
@@ -113,7 +113,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             </span>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="enable_authors">Authors</label>
             <p class="color-gray">
                 Do you want authors to have publicly accessible article listings.
@@ -124,7 +124,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             </span>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="enable_attachments">Attachments</label>
             <p class="color-gray">
                 Do you want media uploads to have publicly accessible attachment pages.
@@ -135,7 +135,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             </span>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="enable_comments">Comments</label>
             <p class="color-gray">
                 Enable comments globally on posts and page.
@@ -146,7 +146,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             </span>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="enable_cache">HTTP Cache</label>
             <p class="color-gray">
                 Enable HTTP Etag caching
@@ -157,7 +157,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
             </span>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="enable_cdn">CDN</label>
             <p class="color-gray">
                 If you want to use a CDN, Serve will automatically replace all asset URLs (including images), 
@@ -171,7 +171,7 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
 
         <div class="<?php echo ($cdn_enabbled ? 'hide-overflow' : 'hide-overflow collapsed'); ?> " id="cdn-url">
             <div class="gutter-lg gutter-l">
-                <div class="form-field row floor-sm">
+                <div class="form-field on-primary row margin-xs-s">
                     <label for="cdn_url">CDN URL</label>
                     <input type="text" name="cdn_url" id="cdn_url" value="<?php echo $serve->Config->get('cdn.host'); ?>">
                 </div>
@@ -180,6 +180,6 @@ $cdn_enabbled  = $serve->Config->get('cdn.enabled');
         
         <input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>">
         <input type="hidden" name="form_name" value="serve_settings">
-        <button type="submit" class="btn btn-success">Update Settings</button>
+        <button type="submit" class="btn btn-pure btn-primary">Update Settings</button>
     </form>
 </div>

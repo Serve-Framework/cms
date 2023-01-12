@@ -41,7 +41,7 @@ abstract class BaseModel extends Model
 	 * 
 	 * @return array|false
 	 */
-	abstract public function onAJAX() : array|false;
+	abstract public function onAJAX() : array|false|string;
 
 	/**
 	 * On HTTP GET.

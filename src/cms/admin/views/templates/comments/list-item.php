@@ -69,7 +69,7 @@ if ($comment->status === 'deleted') {
 						<input type="hidden" name="comments[]"   value="<?php echo $comment->id; ?>">
 						<input type="hidden" name="bulk_action"  value="update">
 				    	<button type="button" class="btn js-collapse" data-collapse-target="comment-edit-<?php echo $comment->id; ?>">Cancel</button>
-				    	<button type="submit" class="btn btn-success">Update Comment</button>
+				    	<button type="submit" class="btn btn-primary">Update Comment</button>
 				    </div>
 				</form>
 			</div>

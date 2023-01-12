@@ -2134,7 +2134,7 @@ Helper.prototype.getInputValue = function(input)
     {
         var val = '';
 
-        var checks = this.$All('input[name=' + input.name + ']');
+        var checks = this.$All('input[name="' + input.name + '"]');
 
         for (var i = 0, len = checks.length; i < len; i++)
         {
@@ -14594,6 +14594,8 @@ function complete(response)
      */
     _Ajax.prototype.upload = function(url, data, success, error, start, progress, complete)
     {
+        var _this = this;
+        
         var formData = new FormData();
 
         for (var key in data)
@@ -14624,15 +14626,15 @@ function complete(response)
 
         xhr.method = 'POST';
 
-        if (this.isFunction(start))
+        if (this._isFunc(start))
         {
             xhr.upload.addEventListener('loadstart', start, false);
         }
-        if (this.isFunction(progress))
+        if (this._isFunc(progress))
         {
             xhr.upload.addEventListener('progress', progress, false);
         }
-        if (this.isFunction(complete))
+        if (this._isFunc(complete))
         {
             xhr.upload.addEventListener('load', complete, false);
         }
@@ -14657,7 +14659,7 @@ function complete(response)
                 {
                     var response = e.target.responseText;
 
-                    if (_this.isFunction(success))
+                    if (_this._isFunc(success))
                     {
                         success(response);
                     }
@@ -14665,7 +14667,7 @@ function complete(response)
                 else
                 {
                     // error callback
-                    if (_this.isFunction(error))
+                    if (_this._isFunc(error))
                     {
                         error.call(status, xhr);
                     }
@@ -20788,6 +20790,8 @@ function complete(response)
         Helper.addEventListener(this._inputs, 'change', this._eventHandler);
         Helper.addEventListener(this._inputs, 'input', this._eventHandler);
         Helper.addEventListener(this._inputs, 'hover', this._eventHandler);
+
+        this._setInitalState();
     }
 
     /**
@@ -20882,6 +20886,22 @@ function complete(response)
                 Helper.addClass(this.parentNode, 'not-empty');
             }
         }
+    }
+
+    /**
+     * Set's initial state changes
+     *
+     * @access private
+     */
+    Inputs.prototype._setInitalState = function()
+    {
+        Helper.foreach(this._inputs, function(i, input)
+        {
+            if (!Helper.empty(Helper.getInputValue(input)))
+            {
+                Helper.triggerEvent(input, 'input');
+            }
+        });
     }
 
     // Load into Hubble DOM core

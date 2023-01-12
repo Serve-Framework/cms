@@ -178,13 +178,16 @@ class Category extends Wrapper
             // Remove post joins
             $posts = $this->SQL->SELECT('posts.*')->FROM('categories_to_posts')->LEFT_JOIN_ON('posts', 'categories_to_posts.post_id = posts.id')->WHERE('categories_to_posts.category_id', '=', $this->data['id'])->FIND_ALL();
 
-            foreach ($posts as $post)
+            if ($posts)
             {
-                $postCats = $this->SQL->SELECT('*')->FROM('categories_to_posts')->WHERE('post_id', '=', $post['id'])->FIND_ALL();
-
-                if (count($postCats) === 1)
+                foreach ($posts as $post)
                 {
-                    $this->SQL->INSERT_INTO('categories_to_posts')->VALUES(['post_id' => $post['id'], 'category_id' => 1])->EXEC();
+                    $postCats = $this->SQL->SELECT('*')->FROM('categories_to_posts')->WHERE('post_id', '=', $post['id'])->FIND_ALL();
+
+                    if (count($postCats) === 1)
+                    {
+                        $this->SQL->INSERT_INTO('categories_to_posts')->VALUES(['post_id' => $post['id'], 'category_id' => 1])->EXEC();
+                    }
                 }
             }
 

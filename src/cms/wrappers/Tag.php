@@ -118,13 +118,16 @@ class Tag extends Wrapper
         {
             $posts = $this->SQL->SELECT('posts.*')->FROM('tags_to_posts')->LEFT_JOIN_ON('posts', 'tags_to_posts.post_id = posts.id')->WHERE('tags_to_posts.tag_id', '=', $this->data['id'])->FIND_ALL();
 
-            foreach ($posts as $post)
+            if ($posts)
             {
-                $postTags = $this->SQL->SELECT('*')->FROM('tags_to_posts')->WHERE('post_id', '=', $post['id'])->FIND_ALL();
-
-                if (count($postTags) === 1)
+                foreach ($posts as $post)
                 {
-                    $this->SQL->INSERT_INTO('tags_to_posts')->VALUES(['post_id' => $post['id'], 'tag_id' => 1])->EXEC();
+                    $postTags = $this->SQL->SELECT('*')->FROM('tags_to_posts')->WHERE('post_id', '=', $post['id'])->FIND_ALL();
+
+                    if (count($postTags) === 1)
+                    {
+                        $this->SQL->INSERT_INTO('tags_to_posts')->VALUES(['post_id' => $post['id'], 'tag_id' => 1])->EXEC();
+                    }
                 }
             }
 

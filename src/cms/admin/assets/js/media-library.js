@@ -311,22 +311,20 @@
 
         var self = this;
         var id    = this._fileIdInput.value;
-        Hubble.require('Modal', {
-            type             : 'danger',
-            header           : 'danger',
+        Container.Modal({
             icon             : 'exclamation',
             title            : 'Please Confirm',
             message          : 'Are you POSITIVE you want to permanently delete this attachment?',
-            closeText        : 'Cancel',
+            cancelBtn        : true,
+            cancelText       : 'Cancel',
             closeClass       : 'btn-default',
-            confirmClass     : 'btn-danger',
+            confirmBtn       : true,
+            confirmClass     : 'btn btn-pure btn-danger',
             confirmText      : 'Delete',
             overlay          : 'dark',
-            extras           : '',
-            validateConfirm  : function() { return self._submitDeleteFile(id); },
-
+            extras           : '<div style="background:#323232"><img class="card-img" alt="" style="display:block;width:auto;max-height:200px;" src="'+ this._fileURLInput.value +'"></div>',
             closeAnywhere    :  false,
-            
+            validateConfirm  : function() { return self._submitDeleteFile(id); },
         });
     }
 
@@ -358,9 +356,8 @@
             {
                 self._submitting = false;
                 Helper.removeClass(self._submitUpdateTrigger, 'active');
-                Hubble.require('Notifications', {
-                    type : 'success',
-                    msg  : 'Media info successfully updated!',
+                Container.Notification({
+                    msg  : '<span class="glyph-icon glyph-icon-checkmark3 color-primary"></span>&nbsp;&nbsp;&nbsp;Media info successfully updated!',
                 });
 
                 item.dataset.alt   = form['alt'];
@@ -370,9 +367,8 @@
         function(error) {
             self._submitting = false;
             Helper.removeClass(self._submitUpdateTrigger, 'active');
-            Hubble.require('Notifications', {
-                type : 'danger',
-                msg  : 'There was an error processing your request.',
+            Container.Notification({
+                msg  : '<span class="glyph-icon glyph-icon-cross3 color-danger"></span>&nbsp;&nbsp;&nbsp;There was an error processing your request.',
             });
         });
         return true;
@@ -468,7 +464,9 @@
         }
 
         // Display the modal
-        Helper.addClass(this.wrapper, 'attachment-details');     
+        Helper.addClass(this.wrapper, 'attachment-details');
+
+        Hubble.dom().refresh('Inputs');
     }
 
     /**
@@ -779,7 +777,7 @@
         var title  = self._fileTitleInput.value;
         var alt    = self._fileAltInput.value;
         var size   = Helper.getInputValue(self._sizeSelect);
-        var writer = Hubble.require('KansoWriter');
+        var writer = Hubble.require('ServeWriter');
         var ext    = Helper.$('#media_url', self._detailsForm).value;
         var linkTo = Helper.getInputValue(self._linkToSelect);
         var blogLocation = self.wrapper.dataset.blogLocation || false;

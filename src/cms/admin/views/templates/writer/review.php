@@ -153,7 +153,7 @@
 				</div>
 			</div>
 
-			<button class="btn btn-success with-spinner" type="submit">
+			<button class="btn btn-primary with-spinner" type="submit">
                 <svg viewBox="0 0 64 64" class="loading-spinner"><circle class="path" cx="32" cy="32" r="30" fill="none" stroke-width="4"></circle></svg>
                 Publish
             </button>

@@ -16,16 +16,16 @@
 		<?php endif; ?>
 		<div class="media-body gutter-md">
 			<div>
-	            <a class="color-black p4 font-bolder" href="<?php echo the_tag_url($tag->id); ?>" target="_blank">
+	            <a class="color-white p6" href="<?php echo the_tag_url($tag->id); ?>" target="_blank">
 	            	<?php echo $tag->name; ?>
 	            </a>
 	        </div>
 	        <span class="color-gray">Slug:&nbsp;"<?php echo $tag->slug; ?>"&nbsp;-&nbsp;</span>
-	        <a class="p5" href="/admin/posts/?tag=<?php echo $tag->id; ?>">
+	        <a class="p6 color-secondary" href="/admin/posts/?tag=<?php echo $tag->id; ?>">
 	           	with <?php echo $tag->article_count; ?> posts
 	       	</a>
 	       
-	       	<div class="color-gray p5">
+	       	<div class="color-gray p6">
 	       		<?php echo !empty($tag->description) ? Str::reduce($tag->description, 100, '...') : ''; ?>
 	       	</div>
 	       	<div class="taxonomy-edit-wrap collapsed" id="tag-edit-<?php echo $tag->id; ?>">
@@ -50,22 +50,22 @@
 				        <input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>">
 				        <input type="hidden" name="bulk_action"  value="update">
 
-				        <button type="button" class="btn js-collapse" data-collapse-target="tag-edit-<?php echo $tag->id; ?>">Cancel</button>
-				        <button type="submit" class="btn btn-success">Update Tag</button>
+				        <button type="button" class="btn btn-pure js-collapse" data-collapse-target="tag-edit-<?php echo $tag->id; ?>">Cancel</button>
+				        <button type="submit" class="btn btn-pure btn-primary">Update Tag</button>
 				    </form>
 	       		</div>
 	       	</div>
 		</div>
 		<div class="media-right nowrap">
 			<?php if ($tag->id !== 1) : ?>
-			<a href="#" class="btn btn-pure btn-xs tooltipped tooltipped-n js-collapse" data-collapse-target="tag-edit-<?php echo $tag->id; ?>" data-tooltip="Quick Edit tag">
-				<span class="glyph-icon glyph-icon-pencil-square-o icon-md"></span>
+			<a href="#" class="btn btn-pure btn-circle tooltipped tooltipped-n js-collapse" data-collapse-target="tag-edit-<?php echo $tag->id; ?>" data-tooltip="Quick Edit tag">
+				<span class="glyph-icon glyph-icon-pencil icon-xs"></span>
 			</a>
-			<a href="#" class="btn btn-pure btn-xs tooltipped tooltipped-n" data-tooltip="Clear tag" onclick="document.getElementById('clear-form-<?php echo $tag->id; ?>').submit()">
-				<span class="glyph-icon glyph-icon-chain-broken icon-md"></span>
+			<a href="#" class="btn btn-pure btn-circle tooltipped tooltipped-n" data-tooltip="Clear tag" onclick="document.getElementById('clear-form-<?php echo $tag->id; ?>').submit()">
+				<span class="glyph-icon glyph-icon-unlink icon-xs"></span>
 			</a>
-	        <a href="#" class="btn btn-pure btn-xs tooltipped tooltipped-n js-confirm-delete" data-item="tag" data-form="delete-form-<?php echo $tag->id; ?>" data-tooltip="Delete tag">
-				<span class="glyph-icon glyph-icon-trash-o icon-md"></span>
+	        <a href="#" class="btn btn-pure btn-circle tooltipped tooltipped-n js-confirm-delete" data-item="tag" data-form="delete-form-<?php echo $tag->id; ?>" data-tooltip="Delete tag">
+				<span class="glyph-icon glyph-icon-bin2 icon-xs"></span>
 			</a>
 			<form method="post" id="clear-form-<?php echo $tag->id; ?>" style="display: none">
 				<input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>">

@@ -23,7 +23,7 @@
             Your analytics settings are used by the CMS to integrate services such as Google Analytics and Facebook Pixel.
         </p>
         
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="gAnalytics_enable">Google Analytics</label>
             <p class="color-gray">Enable or disable Google Analytics integration.</p>
             <span class="checkbox checkbox-primary js-collapse" data-collapse-target="ganalytics">
@@ -34,14 +34,14 @@
 
         <div class="<?php echo ($gAnalyticsEnabled ? 'hide-overflow' : 'hide-overflow collapsed'); ?> " id="ganalytics">
             <div class="gutter-lg gutter-l">
-                <div class="form-field row floor-sm">
+                <div class="form-field on-primary row margin-xs-s">
                     <label for="gAnalytics_id">Analytics Tracking Id</label>
                     <input type="text" name="gAnalytics_id" id="gAnalytics_id" value="<?php echo $gAnalyticsId; ?>">
                 </div>
             </div>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="gAdwords_enable">Google Adwords Tracking</label>
             <p class="color-gray">Enable or disable Google Adwords integration.</p>
             <span class="checkbox checkbox-primary js-collapse" data-collapse-target="gawords">
@@ -52,18 +52,18 @@
 
         <div class="<?php echo ($gAnalyticsEnabled ? 'hide-overflow' : 'hide-overflow collapsed'); ?>" id="gawords">
             <div class="gutter-lg gutter-l">
-                <div class="form-field row floor-sm">
+                <div class="form-field on-primary row margin-xs-s">
                     <label for="gAdwords_id">Adwords Tracking Id</label>
                     <input type="text" name="gAdwords_id" id="gAdwords_id" value="<?php echo $gAdwordsId; ?>">
                 </div>
-                <div class="form-field row floor-sm">
+                <div class="form-field on-primary row margin-xs-s">
                     <label for="gAdwords_cnv_id">Adwords Conversion Tracking Id</label>
                     <input type="text" name="gAdwords_cnv_id" id="gAdwords_cnv_id" value="<?php echo $gAwCvId; ?>">
                 </div>
             </div>
         </div>
 
-        <div class="form-field row floor-sm">
+        <div class="form-field on-primary row margin-xs-s">
             <label for="fbPixel_enable">Facebook Pixel</label>
             <p class="color-gray">Enable or disable Facebook Pixel integration.</p>
             <span class="checkbox checkbox-primary js-collapse" data-collapse-target="fbPixel">
@@ -74,7 +74,7 @@
 
         <div class="<?php echo ($fbEnabled ? 'hide-overflow' : 'hide-overflow collapsed'); ?> " id="fbPixel">
             <div class="gutter-lg gutter-l">
-                <div class="form-field row floor-sm">
+                <div class="form-field on-primary row margin-xs-s">
                     <label for="fbPixel_id">Facebook Pixel Id</label>
                     <input type="text" name="fbPixel_id" id="fbPixel_id" value="<?php echo $fbPixelId; ?>">
                 </div>
@@ -84,6 +84,6 @@
         
         <input type="hidden" name="access_token" value="<?php echo $ACCESS_TOKEN; ?>">
         <input type="hidden" name="form_name" value="analytics_settings">
-        <button type="submit" class="btn btn-success">Update Settings</button>
+        <button type="submit" class="btn btn-pure btn-primary">Update Settings</button>
     </form>
 </div>

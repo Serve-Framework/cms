@@ -12,9 +12,7 @@
      *
      * @var node
      */
-    var imgWrap = Helper.$('.js-writer-form select[name="type"]');
-
-    console.log(imgWrap);
+    var imgWrap = Helper.$('.js-author-avatar-img');
     
     /**
      *
@@ -48,7 +46,7 @@
         setAvatarTrigger.addEventListener('click', function(e) {
             e = e || window.event;
             e.preventDefault();
-            Hubble.require('MediaLibrary')._hideLibrary();
+            Container.require('MediaLibrary')._hideLibrary();
             featureInput.value = Helper.$('#media_id').value;
             img.src = Helper.$('#media_url').value;
             Helper.addClass(imgWrap, 'active');
@@ -179,23 +177,17 @@
         var form = Helper.$('#'+this.dataset.form);
         var item = this.dataset.item;
         
-        Hubble.require('Notifications', {
-            type           : 'default',
+        Container.Notification({
             msg            : 'Are you POSITIVE you want to delete this '+item+'?',
             isCallback     :  true,
-
-            cancelText     : 'No',
-            cancelClass    : 'btn-default',
-            
-            confirmText    : 'Yes delete it!',
-            confirmClass   : 'btn-danger',
-            onConfirm      : function(args) { form.submit(); },
+            timeoutMs      :  10000,
+            confirmText    : 'Delete',
+            onConfirm      : function(form) { form.submit(); },
             onConfirmArgs  : [form],
         });
 
     }
 
-    
     /**
      * Check/uncheck all the list items
      *

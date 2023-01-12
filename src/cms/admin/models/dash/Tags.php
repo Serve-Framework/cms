@@ -49,7 +49,7 @@ class Tags extends BaseModel
     /**
      * {@inheritdoc}
      */
-    public function onAJAX(): array|false
+    public function onAJAX(): array|false|string
     {
         return false;
     }
@@ -293,6 +293,7 @@ class Tags extends BaseModel
         $offset       = $page * $perPage;
         $limit        = $perPage;
         $search       = $queries['search'];
+        $madeWhere    = false;
 
         // Select the posts
         $this->sql()->SELECT('tags.id')->FROM('tags');
@@ -309,7 +310,7 @@ class Tags extends BaseModel
         // Search the name
         if ($search)
         {
-            $this->sql()->AND_WHERE('name', 'like', '%' . $queries['search'] . '%');
+            $this->sql()->WHERE('name', 'LIKE', '%' . $queries['search'] . '%');
         }
 
         // Find the articles
@@ -329,8 +330,18 @@ class Tags extends BaseModel
         {
             $this->sql()->SELECT('posts.id')->FROM('posts')
             ->LEFT_JOIN_ON('tags_to_posts', 'posts.id = tags_to_posts.post_id')
-            ->LEFT_JOIN_ON('tags', 'tags.id = tags_to_posts.tag_id')
-            ->WHERE('tags.id', '=', $row['id']);
+            ->LEFT_JOIN_ON('tags', 'tags.id = tags_to_posts.tag_id');
+
+            if (!$madeWhere)
+            {
+                $this->sql()->WHERE('tags.id', '=', $row['id']);
+
+                $madeWhere = true;
+            }
+            else
+            {
+                $this->sql()->AND_WHERE('tags.id', '=', $row['id']);
+            }
 
             $tag = $this->TagManager->byId($row['id']);
 

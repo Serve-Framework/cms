@@ -1344,7 +1344,7 @@ ServeWriter.prototype._saveArticle = function(showNotification, isPublish)
         } 
         else
         {
-            Hubble.require('Notifications', { type : 'danger', msg : 'The server encountered an error while saving the article.'});
+            Container.Notification({ msg : 'The server encountered an error while saving the article.'});
         }
 
         _this.api.is_saving = false;
@@ -1353,7 +1353,7 @@ ServeWriter.prototype._saveArticle = function(showNotification, isPublish)
     },
     function(error)
     {
-        Hubble.require('Notifications', { type : 'danger', msg : 'The server encountered an error while saving the article.'});
+        Container.Notification({ msg : 'The server encountered an error while saving the article.'});
 
         _this.api.is_saving = false;
 
@@ -1391,7 +1391,16 @@ ServeWriter.prototype._onSaved = function(postId, postSlug, showNotification, is
     {
         var slug = location.protocol + "//" + location.host + '/' + postSlug;
         
-        Hubble.require('Notifications', { type : 'success', msg : 'Your article was successfully published. Click <a href="' + slug + '" target="_blank">here</a> to view live.'});
+        Container.Notification({ 
+            msg : 'Your article was successfully published.',
+            confirmText: 'View Live',
+            isCallback: true,
+            onConfirm: function(slug)
+            {
+                window.open(slug, '_blank').focus();
+            },
+            onConfirmArgs: [slug]
+        });
 
         this.api.is_published = true;
     }
@@ -1399,7 +1408,16 @@ ServeWriter.prototype._onSaved = function(postId, postSlug, showNotification, is
     {
         var slug = location.protocol + "//" + location.host + '/' + postSlug;
 
-        Hubble.require('Notifications', { type : 'success', msg : 'Your article was successfully saved. Click <a href="' + slug + '" target="_blank">here</a> to view live.'});
+        Container.Notification({
+            msg : 'Your article was successfully saved.',
+            confirmText: 'View Live',
+            isCallback: true,
+            onConfirm: function(slug)
+            {
+                window.open(slug, '_blank').focus();
+            },
+            onConfirmArgs: [slug]
+        });
     }
 
     Helper.removeClass(_saveTriggerEl, 'active');

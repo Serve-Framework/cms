@@ -49,7 +49,7 @@ class CommentUsers extends BaseModel
     /**
      * {@inheritdoc}
      */
-    public function onAJAX(): array|false
+    public function onAJAX(): array|false|string
     {
         return false;
     }
