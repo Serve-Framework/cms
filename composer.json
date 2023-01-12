@@ -27,5 +27,5 @@
         "php": ">=8.0.0",
         "serve/framework": "8.0.*"
     },
-    "prefer-stable": true,
+    "prefer-stable": true
 }
